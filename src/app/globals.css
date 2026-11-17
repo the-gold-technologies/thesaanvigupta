@@ -1,26 +1,157 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --night: #06040f;
+  --night-2: #0d0a1f;
+  --ink: #141031;
+  --violet: #3b2370;
+  --gold: #e9c27a;
+  --gold-2: #c9963f;
+  --saffron: #f07a3a;
+  --ivory: #f6eedc;
+  --muted: #c4bcd8;
 }
 
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-night: var(--night);
+  --color-night-2: var(--night-2);
+  --color-ink: var(--ink);
+  --color-violet: var(--violet);
+  --color-gold: var(--gold);
+  --color-gold-2: var(--gold-2);
+  --color-saffron: var(--saffron);
+  --color-ivory: var(--ivory);
+  --color-muted: var(--muted);
+  --font-display: var(--font-cinzel);
+  --font-serif: var(--font-cormorant);
+  --font-sans: var(--font-manrope);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  background: var(--night);
 }
 
+/* body stays transparent so the fixed -z-10 starfield shows through */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: transparent;
+  color: var(--ivory);
+  font-family: var(--font-manrope), system-ui, sans-serif;
+  overflow-x: hidden;
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--night);
+}
+
+/* Scrollbar */
+::-webkit-scrollbar { width: 10px; }
+::-webkit-scrollbar-track { background: var(--night); }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(var(--gold-2), var(--violet));
+  border-radius: 10px;
+}
+
+/* ---------- Utilities ---------- */
+.text-gold-gradient {
+  background: linear-gradient(100deg, #f8e2b0 0%, #e9c27a 35%, #c9963f 60%, #f8e2b0 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer 6s linear infinite;
+}
+
+@keyframes shimmer {
+  to { background-position: 200% center; }
+}
+
+.glass {
+  background: linear-gradient(145deg, rgba(22, 18, 48, 0.9), rgba(10, 8, 24, 0.94));
+  border: 1px solid rgba(233, 194, 122, 0.18);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.gold-border {
+  position: relative;
+}
+.gold-border::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  padding: 1px;
+  border-radius: inherit;
+  background: linear-gradient(140deg, rgba(233, 194, 122, 0.7), rgba(59, 35, 112, 0.2) 40%, rgba(233, 194, 122, 0.5));
+  -webkit-mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+.btn-gold {
+  background: linear-gradient(120deg, #f8e2b0, #e9c27a 40%, #c9963f);
+  color: #1a1206;
+  box-shadow: 0 0 0 1px rgba(255, 230, 180, 0.4) inset, 0 10px 40px -10px rgba(233, 194, 122, 0.7);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.btn-gold:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 0 1px rgba(255, 230, 180, 0.6) inset, 0 16px 50px -10px rgba(233, 194, 122, 0.9);
+}
+
+.btn-ghost {
+  border: 1px solid rgba(233, 194, 122, 0.35);
+  color: var(--ivory);
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+.btn-ghost:hover {
+  background: rgba(233, 194, 122, 0.08);
+  border-color: rgba(233, 194, 122, 0.7);
+}
+
+.nebula {
+  background:
+    radial-gradient(40% 35% at 15% 20%, rgba(91, 50, 170, 0.13), transparent 70%),
+    radial-gradient(35% 30% at 85% 15%, rgba(240, 122, 58, 0.05), transparent 70%),
+    radial-gradient(45% 40% at 70% 80%, rgba(59, 35, 112, 0.16), transparent 70%),
+    radial-gradient(30% 30% at 20% 85%, rgba(233, 194, 122, 0.03), transparent 70%);
+}
+
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(233, 194, 122, 0.45), transparent);
+}
+
+.spin-slow { animation: spin 120s linear infinite; }
+.spin-slower { animation: spin 200s linear infinite reverse; }
+.spin-mid { animation: spin 60s linear infinite; }
+@keyframes spin { to { transform: rotate(360deg); } }
+
+.float { animation: float 7s ease-in-out infinite; }
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+
+.pulse-ring { animation: pulseRing 2.4s cubic-bezier(0.2, 0.7, 0.3, 1) infinite; }
+@keyframes pulseRing {
+  0% { transform: scale(1); opacity: 0.6; }
+  100% { transform: scale(1.8); opacity: 0; }
+}
+
+.marquee { animation: marquee 40s linear infinite; }
+@keyframes marquee { to { transform: translateX(-50%); } }
+
+.glyph {
+  font-family: "Segoe UI Symbol", "Noto Sans Symbols", "Apple Symbols", sans-serif;
+  font-variant-emoji: text;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .spin-slow, .spin-slower, .spin-mid, .float, .pulse-ring, .marquee, .text-gold-gradient {
+    animation: none !important;
+  }
+  html { scroll-behavior: auto; }
 }
