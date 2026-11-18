@@ -23,15 +23,15 @@ export default function FaqSection() {
             <span className="mt-1 block font-script text-[3.2rem] normal-case leading-[0.95] text-bronze sm:text-[4rem]">answered</span>
           </h2>
           <Divider className="mt-4" />
-          <div className="mt-8 rounded-2xl bg-midnight p-6 text-cream">
-            <p className="font-serif text-xl">Still have a question?</p>
-            <p className="mt-1 text-sm text-cream/60">Ask directly. We usually reply within a few hours.</p>
+          <div className="mt-8 rounded-2xl border border-umber/40 bg-mocha p-6 text-latte shadow-[0_24px_50px_-38px_rgba(43,31,24,0.5)]">
+            <p className="font-serif text-xl text-cream">Still have a question?</p>
+            <p className="mt-1 text-sm text-cream/80">Ask directly. We usually reply within a few hours.</p>
             <div className="mt-5 flex flex-col gap-2 sm:flex-row lg:flex-col xl:flex-row">
-              <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn-gold inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
+              <a href={waLink()} target="_blank" rel="noopener noreferrer" className="inline-flex bg-latte text-mocha transition hover:bg-cream items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold">
                 <WhatsAppIcon className="h-4 w-4" /> WhatsApp
               </a>
-              <a href={`tel:${site.phonePrimaryRaw}`} className="btn-ghost inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm">
-                <Phone className="h-4 w-4 text-gold" /> {site.phonePrimary}
+              <a href={`tel:${site.phonePrimaryRaw}`} className="inline-flex items-center justify-center gap-2 rounded-full border border-cream/30 px-5 py-2.5 text-sm font-medium text-cream transition hover:bg-white/[0.06]">
+                <Phone className="h-4 w-4 text-cream" /> {site.phonePrimary}
               </a>
             </div>
           </div>
@@ -50,7 +50,7 @@ export default function FaqSection() {
                   <span className={`font-serif text-xl transition sm:text-[1.4rem] ${on ? "text-bronze-deep" : "text-midnight"}`}>{f.q}</span>
                   <span
                     className={`grid h-9 w-9 shrink-0 place-items-center rounded-full border transition-all duration-300 ${
-                      on ? "rotate-45 border-midnight bg-midnight text-gold" : "border-bronze/40 text-bronze"
+                      on ? "rotate-45 border-bronze-deep bg-bronze-deep text-cream" : "border-bronze/40 text-bronze"
                     }`}
                   >
                     <Plus className="h-4 w-4" />

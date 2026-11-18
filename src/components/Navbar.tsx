@@ -5,9 +5,8 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, Mail, Menu, Phone, X } from "lucide-react";
+import { ChevronDown, Menu, X } from "lucide-react";
 import { services, site, waLink } from "@/lib/site";
-import { FacebookIcon, InstagramIcon, LinkedInIcon } from "./Icons";
 
 const links = [
   { label: "Home", href: "/" },
@@ -39,37 +38,6 @@ export default function Navbar() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      {/* ── Utility strip (desktop, collapses on scroll) ── */}
-      <div
-        className={`hidden overflow-hidden bg-midnight text-cream/75 transition-all duration-500 lg:block ${
-          scrolled ? "max-h-0 opacity-0" : "max-h-10 opacity-100"
-        }`}
-      >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2 text-xs">
-          <p className="tracking-[0.2em] uppercase">
-            Ancient wisdom <span className="text-gold">✦</span> Modern insight <span className="text-gold">✦</span> Personal guidance
-          </p>
-          <div className="flex items-center gap-5">
-            <a href={`tel:${site.phonePrimaryRaw}`} className="flex items-center gap-1.5 hover:text-gold">
-              <Phone className="h-3.5 w-3.5 text-gold" /> {site.phonePrimary}
-            </a>
-            <a href={`mailto:${site.email}`} className="flex items-center gap-1.5 hover:text-gold">
-              <Mail className="h-3.5 w-3.5 text-gold" /> {site.email}
-            </a>
-            <span className="h-3 w-px bg-cream/20" />
-            {[
-              { href: site.socials.instagram, Icon: InstagramIcon, label: "Instagram" },
-              { href: site.socials.facebook, Icon: FacebookIcon, label: "Facebook" },
-              { href: site.socials.linkedin, Icon: LinkedInIcon, label: "LinkedIn" },
-            ].map(({ href, Icon, label }) => (
-              <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="hover:text-gold">
-                <Icon className="h-3.5 w-3.5" />
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-
       {/* ── Main bar ── */}
       <nav
         className={`border-b transition-all duration-500 ${

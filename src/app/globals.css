@@ -15,12 +15,19 @@
   --cream: #fbf7ef;
   --parchment: #f4ecdf;
   --sand: #e8dbc6;
+  /* warm earth palette for the former dark bands */
+  --mocha: #3e362e;
+  --umber: #865d36;
+  --taupe: #93785b;
+  --tan: #ac8968;
+  --stone: #a69080;
+  --latte: #e3c9a6; /* light accent that reads on mocha/umber */
   --bronze: #8a6a54;
   --bronze-deep: #5c4334;
   --cocoa: #2b1f18;
   --antique: #b48a4a;
-  --midnight: #10142b;
-  --midnight-2: #1a1f3f;
+  --midnight: #3e362e; /* mocha */
+  --midnight-2: #4d4339;
   --sun: #e0592a;
   --mercury: #3e8a52;
   --jupiter: #e2b021;
@@ -41,6 +48,12 @@
   --color-cream: var(--cream);
   --color-parchment: var(--parchment);
   --color-sand: var(--sand);
+  --color-mocha: var(--mocha);
+  --color-umber: var(--umber);
+  --color-taupe: var(--taupe);
+  --color-tan: var(--tan);
+  --color-stone: var(--stone);
+  --color-latte: var(--latte);
   --color-bronze: var(--bronze);
   --color-bronze-deep: var(--bronze-deep);
   --color-cocoa: var(--cocoa);
@@ -184,13 +197,13 @@ body {
 .btn-midnight {
   background: var(--midnight);
   color: var(--cream);
-  box-shadow: 0 0 0 1px rgba(180, 138, 74, 0.35) inset, 0 14px 34px -14px rgba(16, 20, 43, 0.65);
+  box-shadow: 0 0 0 1px rgba(172, 137, 104, 0.4) inset, 0 14px 34px -14px rgba(62, 54, 46, 0.6);
   transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
 }
 .btn-midnight:hover {
   transform: translateY(-2px);
   background: var(--midnight-2);
-  box-shadow: 0 0 0 1px rgba(180, 138, 74, 0.6) inset, 0 20px 40px -14px rgba(16, 20, 43, 0.75);
+  box-shadow: 0 0 0 1px rgba(172, 137, 104, 0.7) inset, 0 20px 40px -14px rgba(62, 54, 46, 0.7);
 }
 
 .btn-bronze-line {
@@ -223,6 +236,21 @@ body {
     radial-gradient(70% 60% at 50% 0%, rgba(59, 35, 112, 0.35), transparent 70%);
   background-size: 200px 200px, 200px 200px, 200px 200px, 200px 200px, 200px 200px, 100% 100%;
 }
+
+/* light counterpart of .sky: warm parchment with faint bronze star specks */
+.parchment-sky {
+  background-color: var(--mocha);
+  background-image:
+    radial-gradient(1px 1px at 20px 30px, rgba(251, 247, 239, 0.55), transparent 60%),
+    radial-gradient(1px 1px at 90px 80px, rgba(251, 247, 239, 0.4), transparent 60%),
+    radial-gradient(1.5px 1.5px at 150px 20px, rgba(251, 247, 239, 0.5), transparent 60%),
+    radial-gradient(1px 1px at 60px 140px, rgba(227, 201, 166, 0.45), transparent 60%),
+    radial-gradient(1px 1px at 170px 160px, rgba(251, 247, 239, 0.35), transparent 60%),
+    radial-gradient(70% 60% at 50% 0%, rgba(134, 93, 54, 0.55), transparent 70%);
+  background-size: 200px 200px, 200px 200px, 200px 200px, 200px 200px, 200px 200px, 100% 100%;
+}
+
+.parchment-sky.deep { background-color: #352e27; }
 
 .hairline-bronze {
   height: 1px;

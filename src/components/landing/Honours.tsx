@@ -16,21 +16,21 @@ export default function Honours() {
               <Reveal key={a.title} delay={i * 0.06} className={i === 0 ? "sm:col-span-2" : ""}>
                 <div
                   className={`group relative h-full overflow-hidden rounded-2xl border p-6 transition hover:-translate-y-0.5 ${
-                    i === 0 ? "border-gold/30 bg-midnight text-cream" : "border-bronze/20 bg-cream"
+                    i === 0 ? "border-umber/40 bg-gradient-to-br from-umber to-mocha text-cream" : "border-bronze/20 bg-cream"
                   }`}
                 >
                   <div className="flex items-start gap-4">
                     <span
                       className={`grid h-12 w-12 shrink-0 place-items-center rounded-full border ${
-                        i === 0 ? "border-gold/60 text-gold" : "border-bronze/40 text-bronze"
+                        i === 0 ? "border-latte/60 bg-white/10 text-latte" : "border-bronze/40 text-bronze"
                       }`}
                     >
                       <Award className="h-5 w-5" strokeWidth={1.5} />
                     </span>
                     <div>
-                      {a.year && <div className="text-[11px] font-semibold uppercase tracking-[0.3em] text-gold">{a.year}</div>}
+                      {a.year && <div className={`text-[11px] font-semibold uppercase tracking-[0.3em] ${i === 0 ? "text-latte" : "text-bronze"}`}>{a.year}</div>}
                       <h3 className={`font-display text-lg ${i === 0 ? "text-cream sm:text-2xl" : "text-midnight"}`}>{a.title}</h3>
-                      <p className={`mt-1 text-sm ${i === 0 ? "text-cream/65" : "text-cocoa/65"}`}>{a.by}</p>
+                      <p className={`mt-1 text-sm ${i === 0 ? "text-cream/80" : "text-cocoa/65"}`}>{a.by}</p>
                     </div>
                   </div>
                 </div>

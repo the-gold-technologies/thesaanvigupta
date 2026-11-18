@@ -10,9 +10,9 @@ export function Sparkle({ className = "" }: { className?: string }) {
 }
 
 /** —— ✦ —— divider */
-export function Divider({ tone = "light", className = "" }: { tone?: "light" | "dark"; className?: string }) {
-  const line = tone === "light" ? "via-bronze/50" : "via-gold/50";
-  const star = tone === "light" ? "text-antique" : "text-gold";
+export function Divider({ tone = "light", className = "" }: { tone?: "light" | "dark" | "warm"; className?: string }) {
+  const line = tone === "light" ? "via-bronze/50" : tone === "warm" ? "via-latte/70" : "via-gold/50";
+  const star = tone === "light" ? "text-antique" : tone === "warm" ? "text-latte" : "text-gold";
   return (
     <div className={`flex items-center gap-3 ${className}`} aria-hidden>
       <span className={`h-px w-16 bg-gradient-to-r from-transparent ${line} to-transparent sm:w-24`} />
@@ -50,27 +50,28 @@ export function Heading({
   title: string;
   script?: string;
   sub?: string;
-  tone?: "light" | "dark";
+  tone?: "light" | "dark" | "warm";
   align?: "center" | "left";
 }) {
   const center = align === "center";
   const dark = tone === "dark";
+  const warm = tone === "warm";
   return (
     <Reveal className={`${center ? "mx-auto text-center" : ""} max-w-3xl`}>
       <div className={`flex items-center gap-3 ${center ? "justify-center" : ""}`}>
         <PlanetDots />
-        <span className={`text-[11px] font-semibold uppercase tracking-[0.35em] ${dark ? "text-gold" : "text-bronze"}`}>{eyebrow}</span>
+        <span className={`text-[11px] font-semibold uppercase tracking-[0.35em] ${dark ? "text-gold" : warm ? "text-latte" : "text-bronze"}`}>{eyebrow}</span>
       </div>
       <h2
         className={`mt-5 font-display text-[1.9rem] uppercase leading-[1.12] tracking-[0.02em] sm:text-4xl md:text-[2.75rem] ${
-          dark ? "text-cream" : "text-midnight"
+          dark || warm ? "text-cream" : "text-midnight"
         }`}
       >
         {title}
         {script && (
           <span
             className={`mt-1 block font-script text-[3.2rem] normal-case leading-[0.9] tracking-normal sm:text-[4.2rem] ${
-              dark ? "text-gold" : "text-bronze"
+              dark ? "text-gold" : warm ? "text-latte" : "text-bronze"
             }`}
           >
             {script}
@@ -78,7 +79,7 @@ export function Heading({
         )}
       </h2>
       <Divider tone={tone} className={`mt-5 ${center ? "justify-center" : ""}`} />
-      {sub && <p className={`mt-5 text-base leading-relaxed md:text-lg ${dark ? "text-cream/70" : "text-cocoa/70"}`}>{sub}</p>}
+      {sub && <p className={`mt-5 text-base leading-relaxed md:text-lg ${dark ? "text-cream/70" : warm ? "text-cream/80" : "text-cocoa/70"}`}>{sub}</p>}
     </Reveal>
   );
 }

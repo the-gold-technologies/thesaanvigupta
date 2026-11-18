@@ -25,7 +25,7 @@ function calc(dob: string) {
 function NumberTile({ n, label, sub }: { n: number; label: string; sub: string }) {
   const m = numberMeanings[n];
   return (
-    <div className="relative overflow-hidden rounded-2xl border border-white/10 bg-white/[0.03] p-5">
+    <div className="relative overflow-hidden rounded-2xl border border-latte/20 bg-white/[0.06] p-5">
       <div className="flex items-center gap-4">
         <span className="relative grid h-16 w-16 shrink-0 place-items-center">
           <span className="spin-mid absolute inset-0 rounded-full border border-dashed" style={{ borderColor: `${m.color}88` }} />
@@ -34,14 +34,14 @@ function NumberTile({ n, label, sub }: { n: number; label: string; sub: string }
           </span>
         </span>
         <div>
-          <div className="text-[10px] font-semibold uppercase tracking-[0.3em] text-gold">{label}</div>
-          <div className="text-[11px] text-cream/50">{sub}</div>
+          <div className="text-[10px] font-semibold uppercase tracking-[0.3em] text-latte">{label}</div>
+          <div className="text-[11px] text-cream/70">{sub}</div>
           <div className="mt-1 flex items-center gap-2 font-display text-cream">
             <span className="glyph" style={{ color: m.color }}>{m.glyph}</span> {m.planet}
           </div>
         </div>
       </div>
-      <p className="mt-4 text-sm leading-relaxed text-cream/70">{m.traits}</p>
+      <p className="mt-4 text-sm leading-relaxed text-cream/85">{m.traits}</p>
     </div>
   );
 }
@@ -95,8 +95,8 @@ export default function Numerology() {
 
         {/* energy card */}
         <Reveal delay={0.1}>
-          <div className="sky relative min-h-[420px] overflow-hidden rounded-[2rem] border border-gold/25 p-6 shadow-[0_40px_80px_-40px_rgba(16,20,43,0.9)] sm:p-8">
-            <div className="text-[11px] uppercase tracking-[0.3em] text-cream/60">Your number energy</div>
+          <div className="relative min-h-[420px] overflow-hidden rounded-[2rem] border border-umber/40 bg-gradient-to-br from-umber to-mocha p-6 shadow-[0_40px_80px_-40px_rgba(62,54,46,0.8)] sm:p-8">
+            <div className="text-[11px] uppercase font-semibold tracking-[0.3em] text-latte">Your number energy</div>
             <AnimatePresence mode="wait">
               {result ? (
                 <motion.div
@@ -115,7 +115,7 @@ export default function Numerology() {
                     )}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="btn-gold flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold"
+                    className="flex items-center justify-center gap-2 rounded-full px-6 py-3 text-sm font-semibold bg-latte text-mocha transition hover:bg-cream"
                   >
                     <WhatsAppIcon className="h-4 w-4" /> Get my full numerology report
                   </a>
@@ -124,12 +124,12 @@ export default function Numerology() {
                 <motion.div key="empty" initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} className="grid min-h-[340px] place-items-center text-center">
                   <div>
                     <div className="relative mx-auto grid h-40 w-40 place-items-center">
-                      <span className="spin-slow absolute inset-0 rounded-full border border-dashed border-gold/40" />
-                      <span className="absolute inset-6 rounded-full border border-gold/20" />
-                      <Sparkle className="h-14 w-14 text-gold drop-shadow-[0_0_20px_#e9c27a]" />
+                      <span className="spin-slow absolute inset-0 rounded-full border border-dashed border-latte/50" />
+                      <span className="absolute inset-6 rounded-full border border-latte/25" />
+                      <Sparkle className="h-14 w-14 text-latte drop-shadow-[0_0_20px_#e3c9a6]" />
                     </div>
                     <p className="mt-6 font-serif text-2xl text-cream">Your numbers are waiting.</p>
-                    <p className="mt-1 text-sm text-cream/55">Enter your birth date to begin.</p>
+                    <p className="mt-1 text-sm text-cream/70">Enter your birth date to begin.</p>
                   </div>
                 </motion.div>
               )}
