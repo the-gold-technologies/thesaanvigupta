@@ -2,12 +2,28 @@
  * Fine-line zodiac wheel drawn in the logo's bronze, with the navagraha
  * planets (logo colours) sitting on slowly turning orbits.
  */
-const SIGNS = ["♈", "♉", "♊", "♋", "♌", "♍", "♎", "♏", "♐", "♑", "♒", "♓"];
+const SIGNS = [
+  "♈",
+  "♉",
+  "♊",
+  "♋",
+  "♌",
+  "♍",
+  "♎",
+  "♏",
+  "♐",
+  "♑",
+  "♒",
+  "♓",
+];
 
 const C = 300;
 const pt = (r: number, deg: number) => {
   const a = ((deg - 90) * Math.PI) / 180;
-  return { x: +(C + r * Math.cos(a)).toFixed(2), y: +(C + r * Math.sin(a)).toFixed(2) };
+  return {
+    x: +(C + r * Math.cos(a)).toFixed(2),
+    y: +(C + r * Math.sin(a)).toFixed(2),
+  };
 };
 
 const PLANETS = [
@@ -32,12 +48,37 @@ export default function BronzeWheel({
   return (
     <svg viewBox="0 0 600 600" className={className} aria-hidden>
       <g className="spin-slow" style={{ transformOrigin: "300px 300px" }}>
-        <circle cx={C} cy={C} r={294} fill="none" stroke={stroke} strokeOpacity="0.45" />
-        <circle cx={C} cy={C} r={246} fill="none" stroke={stroke} strokeOpacity="0.45" />
+        <circle
+          cx={C}
+          cy={C}
+          r={294}
+          fill="none"
+          stroke={stroke}
+          strokeOpacity="0.45"
+        />
+        <circle
+          cx={C}
+          cy={C}
+          r={246}
+          fill="none"
+          stroke={stroke}
+          strokeOpacity="0.45"
+        />
         {Array.from({ length: 72 }).map((_, i) => {
           const a = pt(294, i * 5);
           const b = pt(i % 6 === 0 ? 280 : 288, i * 5);
-          return <line key={i} x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke={stroke} strokeOpacity="0.5" strokeWidth="0.8" />;
+          return (
+            <line
+              key={i}
+              x1={a.x}
+              y1={a.y}
+              x2={b.x}
+              y2={b.y}
+              stroke={stroke}
+              strokeOpacity="0.5"
+              strokeWidth="0.8"
+            />
+          );
         })}
         {SIGNS.map((g, i) => {
           const d1 = pt(246, i * 30);
@@ -45,7 +86,15 @@ export default function BronzeWheel({
           const p = pt(263, i * 30 + 15);
           return (
             <g key={g}>
-              <line x1={d1.x} y1={d1.y} x2={d2.x} y2={d2.y} stroke={stroke} strokeOpacity="0.45" strokeWidth="0.8" />
+              <line
+                x1={d1.x}
+                y1={d1.y}
+                x2={d2.x}
+                y2={d2.y}
+                stroke={stroke}
+                strokeOpacity="0.45"
+                strokeWidth="0.8"
+              />
               <text
                 x={p.x}
                 y={p.y}
@@ -64,23 +113,61 @@ export default function BronzeWheel({
       </g>
 
       <g className="spin-slower" style={{ transformOrigin: "300px 300px" }}>
-        <circle cx={C} cy={C} r={226} fill="none" stroke={stroke} strokeOpacity="0.35" strokeDasharray="2 6" />
+        <circle
+          cx={C}
+          cy={C}
+          r={226}
+          fill="none"
+          stroke={stroke}
+          strokeOpacity="0.35"
+          strokeDasharray="2 6"
+        />
         {Array.from({ length: 27 }).map((_, i) => {
           const a = pt(226, (i * 360) / 27);
-          return <circle key={i} cx={a.x} cy={a.y} r={1.6} fill={stroke} opacity="0.7" />;
+          return (
+            <circle
+              key={i}
+              cx={a.x}
+              cy={a.y}
+              r={1.6}
+              fill={stroke}
+              opacity="0.7"
+            />
+          );
         })}
       </g>
 
       <g className="spin-mid" style={{ transformOrigin: "300px 300px" }}>
         {[196, 164, 132].map((r) => (
-          <circle key={r} cx={C} cy={C} r={r} fill="none" stroke={stroke} strokeOpacity="0.2" />
+          <circle
+            key={r}
+            cx={C}
+            cy={C}
+            r={r}
+            fill="none"
+            stroke={stroke}
+            strokeOpacity="0.2"
+          />
         ))}
         {PLANETS.map((p, i) => {
           const c = pt(p.r, p.deg);
           return (
             <g key={i}>
-              <circle cx={c.x} cy={c.y} r={p.size * 2.2} fill={p.color} opacity="0.15" />
-              <circle cx={c.x} cy={c.y} r={p.size} fill={p.color} stroke={p.stroke} strokeWidth={p.stroke ? 1 : 0} />
+              <circle
+                cx={c.x}
+                cy={c.y}
+                r={p.size * 2.2}
+                fill={p.color}
+                opacity="0.15"
+              />
+              <circle
+                cx={c.x}
+                cy={c.y}
+                r={p.size}
+                fill={p.color}
+                stroke={p.stroke}
+                strokeWidth={p.stroke ? 1 : 0}
+              />
             </g>
           );
         })}

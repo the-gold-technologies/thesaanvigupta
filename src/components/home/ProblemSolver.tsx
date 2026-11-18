@@ -3,7 +3,18 @@
 import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { Baby, Briefcase, Building2, CheckCircle2, Coins, Heart, HeartPulse, House, Scale, Sparkles } from "lucide-react";
+import {
+  Baby,
+  Briefcase,
+  Building2,
+  CheckCircle2,
+  Coins,
+  Heart,
+  HeartPulse,
+  House,
+  Scale,
+  Sparkles,
+} from "lucide-react";
 import SectionHeading from "@/components/SectionHeading";
 import { WhatsAppIcon } from "@/components/Icons";
 import { problems, services, waLink } from "@/lib/site";
@@ -52,13 +63,24 @@ export default function ProblemSolver() {
                 >
                   <span
                     className={`grid h-10 w-10 place-items-center rounded-full transition ${
-                      on ? "bg-gold text-night" : "bg-gold/10 text-gold group-hover:bg-gold/20"
+                      on
+                        ? "bg-gold text-night"
+                        : "bg-gold/10 text-gold group-hover:bg-gold/20"
                     }`}
                   >
                     <Icon className="h-5 w-5" />
                   </span>
-                  <span className={`text-sm font-semibold sm:text-base ${on ? "text-ivory" : "text-ivory/80"}`}>{x.label}</span>
-                  {on && <motion.span layoutId="probGlow" className="absolute -right-6 -top-6 h-20 w-20 rounded-full bg-gold/20 blur-2xl" />}
+                  <span
+                    className={`text-sm font-semibold sm:text-base ${on ? "text-ivory" : "text-ivory/80"}`}
+                  >
+                    {x.label}
+                  </span>
+                  {on && (
+                    <motion.span
+                      layoutId="probGlow"
+                      className="absolute -right-6 -top-6 h-20 w-20 rounded-full bg-gold/20 blur-2xl"
+                    />
+                  )}
                 </button>
               );
             })}
@@ -76,7 +98,9 @@ export default function ProblemSolver() {
                 transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
                 className="relative"
               >
-                <h3 className="font-display text-2xl leading-snug text-ivory sm:text-3xl">{p.headline}</h3>
+                <h3 className="font-display text-2xl leading-snug text-ivory sm:text-3xl">
+                  {p.headline}
+                </h3>
 
                 <div className="mt-7 rounded-2xl border border-gold/15 bg-night/50 p-5">
                   <div className="flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.25em] text-gold">
@@ -85,7 +109,10 @@ export default function ProblemSolver() {
                   <p className="mt-3 leading-relaxed text-muted">{p.stars}</p>
                   <div className="mt-4 flex flex-wrap gap-2">
                     {p.planets.map((pl) => (
-                      <span key={pl} className="rounded-full border border-saffron/40 bg-saffron/10 px-3 py-1 text-xs text-saffron">
+                      <span
+                        key={pl}
+                        className="rounded-full border border-saffron/40 bg-saffron/10 px-3 py-1 text-xs text-saffron"
+                      >
                         {pl}
                       </span>
                     ))}
@@ -93,7 +120,9 @@ export default function ProblemSolver() {
                 </div>
 
                 <div className="mt-7">
-                  <div className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">How Saanvi solves it</div>
+                  <div className="text-xs font-semibold uppercase tracking-[0.25em] text-gold">
+                    How Saanvi solves it
+                  </div>
                   <ul className="mt-4 space-y-3">
                     {p.solution.map((s, k) => (
                       <motion.li
@@ -112,19 +141,26 @@ export default function ProblemSolver() {
 
                 <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
                   <a
-                    href={waLink(`Namaste Saanvi ma'am, I need guidance regarding ${p.label.toLowerCase()}.`)}
+                    href={waLink(
+                      `Namaste Saanvi ma'am, I need guidance regarding ${p.label.toLowerCase()}.`
+                    )}
                     target="_blank"
                     rel="noopener noreferrer"
                     className="btn-gold inline-flex items-center justify-center gap-2 rounded-full px-6 py-3.5 font-semibold"
                   >
-                    <WhatsAppIcon className="h-5 w-5" /> Solve my {p.label.split(" ")[0].toLowerCase()} problem
+                    <WhatsAppIcon className="h-5 w-5" /> Solve my{" "}
+                    {p.label.split(" ")[0].toLowerCase()} problem
                   </a>
                   <div className="flex flex-wrap gap-2 text-sm text-muted">
                     via
                     {p.services.map((slug) => {
                       const s = services.find((x) => x.slug === slug)!;
                       return (
-                        <Link key={slug} href={`/services/${slug}`} className="text-gold underline-offset-4 hover:underline">
+                        <Link
+                          key={slug}
+                          href={`/services/${slug}`}
+                          className="text-gold underline-offset-4 hover:underline"
+                        >
                           {s.title}
                         </Link>
                       );

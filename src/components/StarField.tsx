@@ -2,7 +2,15 @@
 
 import { useEffect, useRef } from "react";
 
-type Star = { x: number; y: number; r: number; a: number; s: number; d: number; hue: number };
+type Star = {
+  x: number;
+  y: number;
+  r: number;
+  a: number;
+  s: number;
+  d: number;
+  hue: number;
+};
 type Shooter = { x: number; y: number; vx: number; vy: number; life: number };
 
 /** Fixed, full-screen twinkling starfield with mouse parallax and occasional shooting stars. */
@@ -16,7 +24,9 @@ export default function StarField() {
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    const reduce = window.matchMedia(
+      "(prefers-reduced-motion: reduce)"
+    ).matches;
     let w = 0;
     let h = 0;
     let dpr = 1;
@@ -103,7 +113,12 @@ export default function StarField() {
       }
       for (let i = shooters.length - 1; i >= 0; i--) {
         const s = shooters[i];
-        const grad = ctx.createLinearGradient(s.x, s.y, s.x - s.vx * 14, s.y - s.vy * 14);
+        const grad = ctx.createLinearGradient(
+          s.x,
+          s.y,
+          s.x - s.vx * 14,
+          s.y - s.vy * 14
+        );
         grad.addColorStop(0, `rgba(255,236,200,${s.life})`);
         grad.addColorStop(1, "rgba(255,236,200,0)");
         ctx.strokeStyle = grad;
@@ -146,7 +161,10 @@ export default function StarField() {
 
   return (
     <div aria-hidden className="pointer-events-none fixed inset-0 -z-10">
-      <div ref={nebulaRef} className="nebula absolute -inset-[12%] will-change-transform" />
+      <div
+        ref={nebulaRef}
+        className="nebula absolute -inset-[12%] will-change-transform"
+      />
       <canvas ref={ref} className="absolute inset-0" />
       {/* soft vignette keeps the centre (where content sits) darkest */}
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,rgba(6,4,15,0.55),rgba(6,4,15,0.15)_70%)]" />

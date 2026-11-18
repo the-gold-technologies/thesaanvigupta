@@ -4,7 +4,12 @@ import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
 import FaqSection from "@/components/landing/FaqSection";
-import { FacebookIcon, InstagramIcon, LinkedInIcon, WhatsAppIcon } from "@/components/Icons";
+import {
+  FacebookIcon,
+  InstagramIcon,
+  LinkedInIcon,
+  WhatsAppIcon,
+} from "@/components/Icons";
 import { site, waLink } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -14,10 +19,32 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
   const cards = [
-    { Icon: WhatsAppIcon, title: "WhatsApp", value: site.phonePrimary, href: waLink(), ext: true },
-    { Icon: Phone, title: "Call us", value: `${site.phonePrimary} · ${site.phoneSecondary}`, href: `tel:${site.phonePrimaryRaw}` },
-    { Icon: Mail, title: "Email", value: site.email, href: `mailto:${site.email}` },
-    { Icon: MapPin, title: "Visit", value: site.address, href: site.mapUrl, ext: true },
+    {
+      Icon: WhatsAppIcon,
+      title: "WhatsApp",
+      value: site.phonePrimary,
+      href: waLink(),
+      ext: true,
+    },
+    {
+      Icon: Phone,
+      title: "Call us",
+      value: `${site.phonePrimary} · ${site.phoneSecondary}`,
+      href: `tel:${site.phonePrimaryRaw}`,
+    },
+    {
+      Icon: Mail,
+      title: "Email",
+      value: site.email,
+      href: `mailto:${site.email}`,
+    },
+    {
+      Icon: MapPin,
+      title: "Visit",
+      value: site.address,
+      href: site.mapUrl,
+      ext: true,
+    },
   ];
 
   return (
@@ -37,33 +64,58 @@ export default function ContactPage() {
               <Reveal key={title} delay={i * 0.06}>
                 <a
                   href={href}
-                  {...(ext ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+                  {...(ext
+                    ? { target: "_blank", rel: "noopener noreferrer" }
+                    : {})}
                   className="group flex items-start gap-5 rounded-2xl border border-bronze/20 bg-white/80 p-5 shadow-sm transition hover:border-bronze/50 hover:bg-white"
                 >
                   <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-bronze/10 text-bronze-deep transition group-hover:bg-bronze-deep group-hover:text-cream">
                     <Icon className="h-5 w-5" />
                   </span>
                   <span>
-                    <span className="block text-xs font-semibold uppercase tracking-[0.25em] text-bronze">{title}</span>
-                    <span className="mt-1 block font-medium text-cocoa">{value}</span>
+                    <span className="block text-xs font-semibold uppercase tracking-[0.25em] text-bronze">
+                      {title}
+                    </span>
+                    <span className="mt-1 block font-medium text-cocoa">
+                      {value}
+                    </span>
                   </span>
                 </a>
               </Reveal>
             ))}
-            <Reveal delay={0.3} className="flex items-start gap-5 rounded-2xl border border-bronze/20 bg-white/80 p-5 shadow-sm">
+            <Reveal
+              delay={0.3}
+              className="flex items-start gap-5 rounded-2xl border border-bronze/20 bg-white/80 p-5 shadow-sm"
+            >
               <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-bronze/10 text-bronze-deep">
                 <Clock className="h-5 w-5" />
               </span>
               <span>
-                <span className="block text-xs font-semibold uppercase tracking-[0.25em] text-bronze">Consultations</span>
-                <span className="mt-1 block text-cocoa/80">By appointment: in person, phone or video call</span>
+                <span className="block text-xs font-semibold uppercase tracking-[0.25em] text-bronze">
+                  Consultations
+                </span>
+                <span className="mt-1 block text-cocoa/80">
+                  By appointment: in person, phone or video call
+                </span>
               </span>
             </Reveal>
             <Reveal delay={0.35} className="flex gap-3 pt-2">
               {[
-                { href: site.socials.instagram, Icon: InstagramIcon, label: "Instagram" },
-                { href: site.socials.facebook, Icon: FacebookIcon, label: "Facebook" },
-                { href: site.socials.linkedin, Icon: LinkedInIcon, label: "LinkedIn" },
+                {
+                  href: site.socials.instagram,
+                  Icon: InstagramIcon,
+                  label: "Instagram",
+                },
+                {
+                  href: site.socials.facebook,
+                  Icon: FacebookIcon,
+                  label: "Facebook",
+                },
+                {
+                  href: site.socials.linkedin,
+                  Icon: LinkedInIcon,
+                  label: "LinkedIn",
+                },
               ].map(({ href, Icon, label }) => (
                 <a
                   key={label}

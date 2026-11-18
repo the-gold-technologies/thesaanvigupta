@@ -4,7 +4,11 @@ import SectionHeading from "@/components/SectionHeading";
 import Reveal from "@/components/Reveal";
 import { services } from "@/lib/site";
 
-export default function ServicesGrid({ showHeading = true }: { showHeading?: boolean }) {
+export default function ServicesGrid({
+  showHeading = true,
+}: {
+  showHeading?: boolean;
+}) {
   return (
     <section id="services" className="relative scroll-mt-24 py-24 md:py-32">
       <div className="mx-auto max-w-7xl px-5 sm:px-6">
@@ -39,11 +43,18 @@ export default function ServicesGrid({ showHeading = true }: { showHeading?: boo
                   {s.glyph}
                 </span>
                 <div className="relative mt-auto pt-10">
-                  <div className="text-[11px] uppercase tracking-[0.3em] text-muted">Ruled by {s.planet}</div>
-                  <h3 className="mt-2 font-display text-2xl text-ivory">{s.title}</h3>
-                  <p className="mt-3 text-sm leading-relaxed text-muted">{s.short}</p>
+                  <div className="text-[11px] uppercase tracking-[0.3em] text-muted">
+                    Ruled by {s.planet}
+                  </div>
+                  <h3 className="mt-2 font-display text-2xl text-ivory">
+                    {s.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-muted">
+                    {s.short}
+                  </p>
                   <span className="mt-6 inline-flex items-center gap-1.5 text-sm font-semibold text-gold">
-                    Explore <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
+                    Explore{" "}
+                    <ArrowUpRight className="h-4 w-4 transition group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </span>
                 </div>
               </Link>

@@ -25,7 +25,10 @@ const faqLd = {
 export default function Home() {
   return (
     <div className="bg-cream text-cocoa">
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }} />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqLd) }}
+      />
       <Hero />
       <Ribbon />
       <About />

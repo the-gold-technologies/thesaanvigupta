@@ -9,7 +9,8 @@ export const site = {
   phoneSecondaryRaw: "+919910819545",
   whatsapp: "918383899630",
   email: "contact@thesaanvigupta.com",
-  address: "ASG Consultants, 115, Cleo Street, Sector 121, Noida, Uttar Pradesh",
+  address:
+    "ASG Consultants, 115, Cleo Street, Sector 121, Noida, Uttar Pradesh",
   mapUrl:
     "https://www.google.com/maps/search/?api=1&query=ASG+Consultants+Cleo+Street+Sector+121+Noida",
   googleReviewUrl:
@@ -29,7 +30,9 @@ export const site = {
   ],
 };
 
-export function waLink(message = "Namaste Saanvi ma'am, I would like to book a consultation.") {
+export function waLink(
+  message = "Namaste Saanvi ma'am, I would like to book a consultation."
+) {
   return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}`;
 }
 
@@ -73,11 +76,25 @@ export const services: Service[] = [
       "Children, education and family matters",
     ],
     process: [
-      { title: "Chart casting", text: "Your Kundali is prepared from your date, time and place of birth." },
-      { title: "Deep analysis", text: "Houses, planets, dashas and current transits are studied together." },
-      { title: "Guidance & remedies", text: "Simple, affordable remedies you can follow in daily life." },
+      {
+        title: "Chart casting",
+        text: "Your Kundali is prepared from your date, time and place of birth.",
+      },
+      {
+        title: "Deep analysis",
+        text: "Houses, planets, dashas and current transits are studied together.",
+      },
+      {
+        title: "Guidance & remedies",
+        text: "Simple, affordable remedies you can follow in daily life.",
+      },
     ],
-    youShare: ["Date of birth", "Exact time of birth", "Place of birth", "Your main concern"],
+    youShare: [
+      "Date of birth",
+      "Exact time of birth",
+      "Place of birth",
+      "Your main concern",
+    ],
   },
   {
     slug: "vastu-consultant",
@@ -97,11 +114,25 @@ export const services: Service[] = [
       "Remedies without demolition",
     ],
     process: [
-      { title: "Plan study", text: "Share your floor plan or schedule a site visit." },
-      { title: "Direction mapping", text: "The 16 zones of your space are mapped and analysed." },
-      { title: "Practical corrections", text: "Colour, placement and element-based remedies — no demolition." },
+      {
+        title: "Plan study",
+        text: "Share your floor plan or schedule a site visit.",
+      },
+      {
+        title: "Direction mapping",
+        text: "The 16 zones of your space are mapped and analysed.",
+      },
+      {
+        title: "Practical corrections",
+        text: "Colour, placement and element-based remedies — no demolition.",
+      },
     ],
-    youShare: ["Floor plan / layout", "Main door direction", "Photos or a site visit", "What is not working"],
+    youShare: [
+      "Floor plan / layout",
+      "Main door direction",
+      "Photos or a site visit",
+      "What is not working",
+    ],
   },
   {
     slug: "numerology",
@@ -121,11 +152,25 @@ export const services: Service[] = [
       "Choosing auspicious dates",
     ],
     process: [
-      { title: "Number mapping", text: "Your birth date and name are converted into core numbers." },
-      { title: "Compatibility check", text: "Numbers are matched against your goals and chart." },
-      { title: "Alignment", text: "Name, number and date suggestions you can start using today." },
+      {
+        title: "Number mapping",
+        text: "Your birth date and name are converted into core numbers.",
+      },
+      {
+        title: "Compatibility check",
+        text: "Numbers are matched against your goals and chart.",
+      },
+      {
+        title: "Alignment",
+        text: "Name, number and date suggestions you can start using today.",
+      },
     ],
-    youShare: ["Full date of birth", "Full name (as you use it)", "Business name, if any", "Your goal"],
+    youShare: [
+      "Full date of birth",
+      "Full name (as you use it)",
+      "Business name, if any",
+      "Your goal",
+    ],
   },
   {
     slug: "prashan-kundali",
@@ -145,11 +190,24 @@ export const services: Service[] = [
       "Complex or confusing situations",
     ],
     process: [
-      { title: "Ask your question", text: "One clear, sincere question — that's all that's needed." },
-      { title: "Moment chart", text: "A chart is cast for the time your question is received." },
-      { title: "Focused answer", text: "A direct answer, with timing and guidance where possible." },
+      {
+        title: "Ask your question",
+        text: "One clear, sincere question — that's all that's needed.",
+      },
+      {
+        title: "Moment chart",
+        text: "A chart is cast for the time your question is received.",
+      },
+      {
+        title: "Focused answer",
+        text: "A direct answer, with timing and guidance where possible.",
+      },
     ],
-    youShare: ["Your question", "Your current city", "Context of the situation"],
+    youShare: [
+      "Your question",
+      "Your current city",
+      "Context of the situation",
+    ],
   },
   {
     slug: "tarot-card-reading",
@@ -170,17 +228,35 @@ export const services: Service[] = [
     ],
     process: [
       { title: "Set an intention", text: "Share what you'd like clarity on." },
-      { title: "The spread", text: "Cards are drawn and laid out for your question." },
-      { title: "Interpretation", text: "A clear reading with practical next steps." },
+      {
+        title: "The spread",
+        text: "Cards are drawn and laid out for your question.",
+      },
+      {
+        title: "Interpretation",
+        text: "A clear reading with practical next steps.",
+      },
     ],
-    youShare: ["Your question or area of life", "Your name", "Preferred session mode"],
+    youShare: [
+      "Your question or area of life",
+      "Your name",
+      "Preferred session mode",
+    ],
   },
 ];
 
 export type Problem = {
   key: string;
   label: string;
-  icon: "briefcase" | "heart" | "coins" | "pulse" | "building" | "house" | "baby" | "scale";
+  icon:
+    | "briefcase"
+    | "heart"
+    | "coins"
+    | "pulse"
+    | "building"
+    | "house"
+    | "baby"
+    | "scale";
   headline: string;
   stars: string;
   planets: string[];
@@ -340,19 +416,50 @@ export const reviews = [
 ];
 
 export const achievements = [
-  { year: "2021", title: "Vastu Excellence Award", by: "Presented by the Chief Minister of Uttar Pradesh" },
-  { year: "", title: "Excellence in Vastu", by: "Awarded by Professor B. B. Puri" },
-  { year: "", title: "\"Aacharya\" Title", by: "Conferred at Mahagurukul" },
-  { year: "", title: "Award of Honour", by: "Presented by Shri G. D. Vashist & Shri H. S. Rawat" },
-  { year: "", title: "Community Recognition", by: "Green Avenue Residents Welfare Association" },
+  {
+    year: "2021",
+    title: "Vastu Excellence Award",
+    by: "Presented by the Chief Minister of Uttar Pradesh",
+  },
+  {
+    year: "",
+    title: "Excellence in Vastu",
+    by: "Awarded by Professor B. B. Puri",
+  },
+  { year: "", title: '"Aacharya" Title', by: "Conferred at Mahagurukul" },
+  {
+    year: "",
+    title: "Award of Honour",
+    by: "Presented by Shri G. D. Vashist & Shri H. S. Rawat",
+  },
+  {
+    year: "",
+    title: "Community Recognition",
+    by: "Green Avenue Residents Welfare Association",
+  },
 ];
 
 export const whyUs = [
-  { title: "Satisfaction First", text: "Every session ends only when your questions have clear answers." },
-  { title: "20+ Years of Experience", text: "Thousands of charts, homes and businesses studied across India." },
-  { title: "Cost-Effective Remedies", text: "Simple, affordable remedies — no expensive rituals pushed on you." },
-  { title: "No Demolition Vastu", text: "Corrections that work with your existing home or office." },
-  { title: "Practical Approach", text: "Guidance that fits real life, not fear-based predictions." },
+  {
+    title: "Satisfaction First",
+    text: "Every session ends only when your questions have clear answers.",
+  },
+  {
+    title: "20+ Years of Experience",
+    text: "Thousands of charts, homes and businesses studied across India.",
+  },
+  {
+    title: "Cost-Effective Remedies",
+    text: "Simple, affordable remedies — no expensive rituals pushed on you.",
+  },
+  {
+    title: "No Demolition Vastu",
+    text: "Corrections that work with your existing home or office.",
+  },
+  {
+    title: "Practical Approach",
+    text: "Guidance that fits real life, not fear-based predictions.",
+  },
 ];
 
 export const faqs = [
@@ -387,14 +494,71 @@ export const faqs = [
 ];
 
 /** Vedic numerology: number → ruling graha and traits */
-export const numberMeanings: Record<number, { planet: string; glyph: string; traits: string; color: string }> = {
-  1: { planet: "Sun (Surya)", glyph: "☉", traits: "A natural leader — independent, ambitious and original. You shine when you take charge.", color: "#f5b942" },
-  2: { planet: "Moon (Chandra)", glyph: "☾", traits: "Sensitive, intuitive and caring. You bring harmony and connect deeply with people.", color: "#dfe7f2" },
-  3: { planet: "Jupiter (Guru)", glyph: "♃", traits: "Wise, optimistic and expressive. A born teacher and guide with strong values.", color: "#f2d24b" },
-  4: { planet: "Rahu", glyph: "☊", traits: "Unconventional, hardworking and practical. You build things others can't imagine.", color: "#8fa3c7" },
-  5: { planet: "Mercury (Budh)", glyph: "☿", traits: "Quick-witted, adaptable and communicative. Business and travel suit you well.", color: "#5fd39a" },
-  6: { planet: "Venus (Shukra)", glyph: "♀", traits: "Charming, artistic and loving. Beauty, comfort and relationships matter to you.", color: "#f4a6c8" },
-  7: { planet: "Ketu", glyph: "☋", traits: "Spiritual, analytical and deep. You seek truth beneath the surface.", color: "#b59cf0" },
-  8: { planet: "Saturn (Shani)", glyph: "♄", traits: "Disciplined, patient and determined. Success comes steadily — and lasts.", color: "#7d8fe0" },
-  9: { planet: "Mars (Mangal)", glyph: "♂", traits: "Courageous, energetic and protective. You are a fighter with a big heart.", color: "#f0664a" },
+export const numberMeanings: Record<
+  number,
+  { planet: string; glyph: string; traits: string; color: string }
+> = {
+  1: {
+    planet: "Sun (Surya)",
+    glyph: "☉",
+    traits:
+      "A natural leader — independent, ambitious and original. You shine when you take charge.",
+    color: "#f5b942",
+  },
+  2: {
+    planet: "Moon (Chandra)",
+    glyph: "☾",
+    traits:
+      "Sensitive, intuitive and caring. You bring harmony and connect deeply with people.",
+    color: "#dfe7f2",
+  },
+  3: {
+    planet: "Jupiter (Guru)",
+    glyph: "♃",
+    traits:
+      "Wise, optimistic and expressive. A born teacher and guide with strong values.",
+    color: "#f2d24b",
+  },
+  4: {
+    planet: "Rahu",
+    glyph: "☊",
+    traits:
+      "Unconventional, hardworking and practical. You build things others can't imagine.",
+    color: "#8fa3c7",
+  },
+  5: {
+    planet: "Mercury (Budh)",
+    glyph: "☿",
+    traits:
+      "Quick-witted, adaptable and communicative. Business and travel suit you well.",
+    color: "#5fd39a",
+  },
+  6: {
+    planet: "Venus (Shukra)",
+    glyph: "♀",
+    traits:
+      "Charming, artistic and loving. Beauty, comfort and relationships matter to you.",
+    color: "#f4a6c8",
+  },
+  7: {
+    planet: "Ketu",
+    glyph: "☋",
+    traits:
+      "Spiritual, analytical and deep. You seek truth beneath the surface.",
+    color: "#b59cf0",
+  },
+  8: {
+    planet: "Saturn (Shani)",
+    glyph: "♄",
+    traits:
+      "Disciplined, patient and determined. Success comes steadily — and lasts.",
+    color: "#7d8fe0",
+  },
+  9: {
+    planet: "Mars (Mangal)",
+    glyph: "♂",
+    traits:
+      "Courageous, energetic and protective. You are a fighter with a big heart.",
+    color: "#f0664a",
+  },
 };

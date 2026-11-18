@@ -1,6 +1,13 @@
 import Image from "next/image";
 import Link from "next/link";
-import { ArrowRight, Droplet, Flame, Mountain, Sparkles, Wind } from "lucide-react";
+import {
+  ArrowRight,
+  Droplet,
+  Flame,
+  Mountain,
+  Sparkles,
+  Wind,
+} from "lucide-react";
 import Reveal from "@/components/Reveal";
 import Counter from "@/components/Counter";
 import { Divider, PlanetDots } from "./Ornament";
@@ -25,7 +32,10 @@ const CREDENTIALS = [
 
 export default function About() {
   return (
-    <section id="about" className="relative scroll-mt-24 overflow-x-clip bg-parchment py-24 md:py-32">
+    <section
+      id="about"
+      className="relative scroll-mt-24 overflow-x-clip bg-parchment py-24 md:py-32"
+    >
       <div className="mx-auto grid max-w-7xl items-center gap-16 px-5 sm:px-6 lg:grid-cols-[0.9fr_1.1fr]">
         {/* ── Logo seal with the five elements ── */}
         <Reveal className="relative mx-auto aspect-square w-full max-w-[460px]">
@@ -34,7 +44,13 @@ export default function About() {
           <div className="absolute inset-[4%] rounded-full bg-cream shadow-[0_40px_80px_-40px_rgba(43,31,24,0.45)]" />
           <div className="spin-slower absolute inset-[11%] rounded-full border border-dashed border-bronze/35" />
           <div className="absolute inset-[22%] grid place-items-center">
-            <Image src="/images/logo.png" alt="Aacharya Saanvi Gupta logo" width={456} height={441} className="h-full w-full object-contain" />
+            <Image
+              src="/images/logo.png"
+              alt="Aacharya Saanvi Gupta logo"
+              width={456}
+              height={441}
+              className="h-full w-full object-contain"
+            />
           </div>
           {ELEMENTS.map(({ Icon, label, color, deg }) => {
             const a = (deg * Math.PI) / 180;
@@ -52,7 +68,9 @@ export default function About() {
                 >
                   <Icon className="h-5 w-5" />
                 </span>
-                <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-cocoa/60">{label}</span>
+                <span className="mt-1 text-[10px] font-semibold uppercase tracking-[0.2em] text-cocoa/60">
+                  {label}
+                </span>
               </div>
             );
           })}
@@ -63,7 +81,9 @@ export default function About() {
           <Reveal>
             <div className="flex items-center gap-3">
               <PlanetDots />
-              <span className="text-[11px] font-semibold uppercase tracking-[0.35em] text-bronze">Meet your guide</span>
+              <span className="text-[11px] font-semibold uppercase tracking-[0.35em] text-bronze">
+                Meet your guide
+              </span>
             </div>
             <h2 className="mt-5 font-display text-[1.9rem] uppercase leading-[1.12] text-midnight sm:text-4xl md:text-[2.6rem]">
               Astrology should guide you,
@@ -76,18 +96,26 @@ export default function About() {
 
           <Reveal delay={0.1}>
             <p className="mt-6 leading-relaxed text-cocoa/75">
-              Saanvi&apos;s path began in numbers, not stars. She studied commerce at Delhi University and cleared nine Actuarial
-              Science exams. That analytical mind shapes every reading she gives: logical, structured and practical.
+              Saanvi&apos;s path began in numbers, not stars. She studied
+              commerce at Delhi University and cleared nine Actuarial Science
+              exams. That analytical mind shapes every reading she gives:
+              logical, structured and practical.
             </p>
             <p className="mt-4 leading-relaxed text-cocoa/75">
-              Two decades, 10,000+ consultations, a column in <span className="font-semibold text-cocoa">The Pioneer</span> and live
-              shows with the <span className="font-semibold text-cocoa">Amar Ujala</span> group later, her mission is the same: replace
-              fear with clarity, and give remedies that actually fit your life.
+              Two decades, 10,000+ consultations, a column in{" "}
+              <span className="font-semibold text-cocoa">The Pioneer</span> and
+              live shows with the{" "}
+              <span className="font-semibold text-cocoa">Amar Ujala</span> group
+              later, her mission is the same: replace fear with clarity, and
+              give remedies that actually fit your life.
             </p>
 
             <ul className="mt-6 flex flex-wrap gap-2">
               {CREDENTIALS.map((c) => (
-                <li key={c} className="rounded-full border border-bronze/25 bg-cream px-3 py-1.5 text-xs text-bronze-deep">
+                <li
+                  key={c}
+                  className="rounded-full border border-bronze/25 bg-cream px-3 py-1.5 text-xs text-bronze-deep"
+                >
                   {c}
                 </li>
               ))}
@@ -104,13 +132,22 @@ export default function About() {
                   } border-bronze/15`}
                 >
                   <div className="font-display text-2xl text-bronze-deep sm:text-3xl">
-                    <Counter value={s.value} decimals={s.decimals} suffix={s.suffix} />
+                    <Counter
+                      value={s.value}
+                      decimals={s.decimals}
+                      suffix={s.suffix}
+                    />
                   </div>
-                  <div className="mt-1 text-[10px] uppercase tracking-[0.18em] text-cocoa/55">{s.label}</div>
+                  <div className="mt-1 text-[10px] uppercase tracking-[0.18em] text-cocoa/55">
+                    {s.label}
+                  </div>
                 </div>
               ))}
             </div>
-            <Link href="/about" className="btn-bronze-line mt-9 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold">
+            <Link
+              href="/about"
+              className="btn-bronze-line mt-9 inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold"
+            >
               Read her full story <ArrowRight className="h-4 w-4" />
             </Link>
           </Reveal>

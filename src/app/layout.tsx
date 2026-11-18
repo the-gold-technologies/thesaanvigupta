@@ -7,7 +7,11 @@ import Footer from "@/components/Footer";
 import WhatsAppFloat from "@/components/WhatsAppFloat";
 import { site } from "@/lib/site";
 
-const cinzel = Cinzel({ variable: "--font-cinzel", subsets: ["latin"], weight: ["400", "500", "600", "700"] });
+const cinzel = Cinzel({
+  variable: "--font-cinzel",
+  subsets: ["latin"],
+  weight: ["400", "500", "600", "700"],
+});
 const cormorant = Cormorant_Garamond({
   variable: "--font-cormorant",
   subsets: ["latin"],
@@ -16,12 +20,17 @@ const cormorant = Cormorant_Garamond({
 });
 const manrope = Manrope({ variable: "--font-manrope", subsets: ["latin"] });
 // Flowing script that echoes the hand-lettered "asg" in the logo
-const allura = Allura({ variable: "--font-allura", subsets: ["latin"], weight: "400" });
+const allura = Allura({
+  variable: "--font-allura",
+  subsets: ["latin"],
+  weight: "400",
+});
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
-    default: "Aacharya Saanvi Gupta | Best Astrologer & Vastu Consultant in Noida & Delhi",
+    default:
+      "Aacharya Saanvi Gupta | Best Astrologer & Vastu Consultant in Noida & Delhi",
     template: "%s | Aacharya Saanvi Gupta",
   },
   description:
@@ -37,7 +46,8 @@ export const metadata: Metadata = {
   ],
   openGraph: {
     title: "Aacharya Saanvi Gupta — Astrology · Vastu · Numerology",
-    description: "Every problem has a planetary answer. 20+ years, 10,000+ consultations, 4.9★ on Google.",
+    description:
+      "Every problem has a planetary answer. 20+ years, 10,000+ consultations, 4.9★ on Google.",
     url: site.url,
     siteName: "Aacharya Saanvi Gupta",
     images: ["/images/saanvi.webp"],
@@ -70,11 +80,19 @@ const jsonLd = {
   sameAs: Object.values(site.socials),
 };
 
-export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+export default function RootLayout({
+  children,
+}: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${cinzel.variable} ${cormorant.variable} ${manrope.variable} ${allura.variable} antialiased`}>
+    <html
+      lang="en"
+      className={`${cinzel.variable} ${cormorant.variable} ${manrope.variable} ${allura.variable} antialiased`}
+    >
       <body className="relative min-h-screen bg-cream text-cocoa">
-        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
         <StarField />
         <Navbar />
         <main>{children}</main>

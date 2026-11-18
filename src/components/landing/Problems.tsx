@@ -3,12 +3,33 @@
 import Link from "next/link";
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, Baby, Briefcase, Building2, Check, Coins, Heart, HeartPulse, House, Orbit, Scale } from "lucide-react";
+import {
+  ArrowRight,
+  Baby,
+  Briefcase,
+  Building2,
+  Check,
+  Coins,
+  Heart,
+  HeartPulse,
+  House,
+  Orbit,
+  Scale,
+} from "lucide-react";
 import { Heading, Sparkle } from "./Ornament";
 import { WhatsAppIcon } from "@/components/Icons";
 import { problems, services, waLink } from "@/lib/site";
 
-const ICONS = { briefcase: Briefcase, heart: Heart, coins: Coins, pulse: HeartPulse, building: Building2, house: House, baby: Baby, scale: Scale };
+const ICONS = {
+  briefcase: Briefcase,
+  heart: Heart,
+  coins: Coins,
+  pulse: HeartPulse,
+  building: Building2,
+  house: House,
+  baby: Baby,
+  scale: Scale,
+};
 
 export default function Problems() {
   const [active, setActive] = useState(problems[0].key);
@@ -16,7 +37,10 @@ export default function Problems() {
   const ActiveIcon = ICONS[p.icon];
 
   return (
-    <section id="problems" className="parchment-sky relative scroll-mt-24 overflow-hidden py-24 md:py-32">
+    <section
+      id="problems"
+      className="parchment-sky relative scroll-mt-24 overflow-hidden py-24 md:py-32"
+    >
       {/* warm horizon glow */}
       <div className="pointer-events-none absolute -top-40 left-1/2 h-[480px] w-[900px] -translate-x-1/2 rounded-full bg-[radial-gradient(closest-side,rgba(134,93,54,0.5),transparent)]" />
 
@@ -30,7 +54,11 @@ export default function Problems() {
         />
 
         {/* problem chips */}
-        <div className="mx-auto mt-14 flex max-w-5xl flex-wrap justify-center gap-2.5" role="tablist" aria-label="Choose a problem">
+        <div
+          className="mx-auto mt-14 flex max-w-5xl flex-wrap justify-center gap-2.5"
+          role="tablist"
+          aria-label="Choose a problem"
+        >
           {problems.map((x) => {
             const Icon = ICONS[x.icon];
             const on = x.key === active;
@@ -41,10 +69,18 @@ export default function Problems() {
                 aria-selected={on}
                 onClick={() => setActive(x.key)}
                 className={`relative inline-flex items-center gap-2 rounded-full border px-4 py-2.5 text-sm transition ${
-                  on ? "border-latte text-mocha" : "border-cream/20 bg-white/[0.06] text-cream/85 hover:border-latte/60 hover:bg-white/10 hover:text-cream"
+                  on
+                    ? "border-latte text-mocha"
+                    : "border-cream/20 bg-white/[0.06] text-cream/85 hover:border-latte/60 hover:bg-white/10 hover:text-cream"
                 }`}
               >
-                {on && <motion.span layoutId="probPill" className="absolute inset-0 rounded-full bg-latte" transition={{ type: "spring", bounce: 0.2, duration: 0.5 }} />}
+                {on && (
+                  <motion.span
+                    layoutId="probPill"
+                    className="absolute inset-0 rounded-full bg-latte"
+                    transition={{ type: "spring", bounce: 0.2, duration: 0.5 }}
+                  />
+                )}
                 <Icon className="relative h-4 w-4" />
                 <span className="relative font-medium">{x.label}</span>
               </button>
@@ -71,8 +107,12 @@ export default function Problems() {
                   <ActiveIcon className="h-9 w-9" strokeWidth={1.3} />
                 </span>
                 <div>
-                  <div className="text-xs font-semibold uppercase tracking-[0.3em] text-latte">{p.label}</div>
-                  <h3 className="mt-2 font-serif text-2xl leading-snug text-cream sm:text-[2rem]">{p.headline}</h3>
+                  <div className="text-xs font-semibold uppercase tracking-[0.3em] text-latte">
+                    {p.label}
+                  </div>
+                  <h3 className="mt-2 font-serif text-2xl leading-snug text-cream sm:text-[2rem]">
+                    {p.headline}
+                  </h3>
                 </div>
               </div>
             </div>
@@ -83,12 +123,17 @@ export default function Problems() {
                 <span className="grid h-11 w-11 place-items-center rounded-full border border-latte/50 text-latte">
                   <Orbit className="h-5 w-5" />
                 </span>
-                <span className="text-sm font-semibold text-latte">What the stars say</span>
+                <span className="text-sm font-semibold text-latte">
+                  What the stars say
+                </span>
               </div>
               <p className="mt-5 leading-relaxed text-cream/85">{p.stars}</p>
               <div className="mt-5 flex flex-wrap gap-2">
                 {p.planets.map((pl) => (
-                  <span key={pl} className="rounded-full border border-latte/25 bg-white/10 px-3 py-1 text-xs text-cream/90">
+                  <span
+                    key={pl}
+                    className="rounded-full border border-latte/25 bg-white/10 px-3 py-1 text-xs text-cream/90"
+                  >
                     {pl}
                   </span>
                 ))}
@@ -101,7 +146,9 @@ export default function Problems() {
                 <span className="grid h-11 w-11 place-items-center rounded-full border border-latte/50 text-latte">
                   <Sparkle className="h-5 w-5" />
                 </span>
-                <span className="text-sm font-semibold text-latte">How Saanvi solves it</span>
+                <span className="text-sm font-semibold text-latte">
+                  How Saanvi solves it
+                </span>
               </div>
               <ul className="mt-5 space-y-3">
                 {p.solution.map((s) => (
@@ -122,7 +169,10 @@ export default function Problems() {
                   return (
                     <span key={slug}>
                       {k > 0 && " & "}
-                      <Link href={`/services/${slug}`} className="font-semibold text-latte underline-offset-4 hover:underline">
+                      <Link
+                        href={`/services/${slug}`}
+                        className="font-semibold text-latte underline-offset-4 hover:underline"
+                      >
                         {s.title}
                       </Link>
                     </span>
@@ -130,12 +180,15 @@ export default function Problems() {
                 })}
               </div>
               <a
-                href={waLink(`Namaste Saanvi ma'am, I need guidance regarding ${p.label.toLowerCase()}.`)}
+                href={waLink(
+                  `Namaste Saanvi ma'am, I need guidance regarding ${p.label.toLowerCase()}.`
+                )}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 rounded-full px-6 py-3 text-sm font-semibold bg-latte text-mocha transition hover:bg-cream"
               >
-                <WhatsAppIcon className="h-4 w-4" /> Get guidance on {p.label.split(" ")[0].toLowerCase()}
+                <WhatsAppIcon className="h-4 w-4" /> Get guidance on{" "}
+                {p.label.split(" ")[0].toLowerCase()}
                 <ArrowRight className="h-4 w-4" />
               </a>
             </div>

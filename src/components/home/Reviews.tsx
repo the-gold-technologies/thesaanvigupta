@@ -23,7 +23,11 @@ export default function Reviews() {
   return (
     <section id="reviews" className="relative scroll-mt-24 py-24 md:py-32">
       <div className="mx-auto max-w-6xl px-5 sm:px-6">
-        <SectionHeading eyebrow="Client stories" title="Real people." highlight="Real clarity." />
+        <SectionHeading
+          eyebrow="Client stories"
+          title="Real people."
+          highlight="Real clarity."
+        />
 
         <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
           <a
@@ -35,14 +39,18 @@ export default function Reviews() {
             <GoogleIcon className="h-8 w-8" />
             <div>
               <div className="flex items-center gap-2">
-                <span className="font-display text-2xl text-ivory">{site.googleRating}</span>
+                <span className="font-display text-2xl text-ivory">
+                  {site.googleRating}
+                </span>
                 <span className="flex text-gold">
                   {Array.from({ length: 5 }).map((_, k) => (
                     <Star key={k} className="h-4 w-4 fill-current" />
                   ))}
                 </span>
               </div>
-              <div className="text-xs text-muted">Based on {site.googleReviewCount} Google reviews</div>
+              <div className="text-xs text-muted">
+                Based on {site.googleReviewCount} Google reviews
+              </div>
             </div>
           </a>
         </div>
@@ -75,9 +83,12 @@ export default function Reviews() {
                     {r.name.charAt(0)}
                   </span>
                   <span>
-                    <span className="block font-semibold text-ivory">{r.name}</span>
+                    <span className="block font-semibold text-ivory">
+                      {r.name}
+                    </span>
                     <span className="flex items-center gap-1.5 text-xs text-muted">
-                      <GoogleIcon className="h-3 w-3" /> Google review · {r.date}
+                      <GoogleIcon className="h-3 w-3" /> Google review ·{" "}
+                      {r.date}
                     </span>
                   </span>
                 </figcaption>

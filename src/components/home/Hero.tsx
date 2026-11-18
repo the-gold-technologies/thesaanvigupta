@@ -23,13 +23,23 @@ export default function Hero() {
           className="inline-flex items-center gap-3 rounded-full border border-gold/20 bg-night-2/80 py-1.5 pl-1.5 pr-4 text-xs text-muted backdrop-blur transition hover:border-gold/50 sm:text-sm"
         >
           <span className="relative h-8 w-8 shrink-0 overflow-hidden rounded-full ring-1 ring-gold/60">
-            <Image src="/images/saanvi.webp" alt="" fill sizes="32px" className="scale-[1.6] object-cover object-[50%_25%]" priority />
+            <Image
+              src="/images/saanvi.webp"
+              alt=""
+              fill
+              sizes="32px"
+              className="scale-[1.6] object-cover object-[50%_25%]"
+              priority
+            />
           </span>
           <span className="text-ivory">Aacharya Saanvi Gupta</span>
           <span className="text-gold/40">|</span>
           <span className="flex items-center gap-1">
-            <Star className="h-3.5 w-3.5 fill-gold text-gold" /> {site.googleRating}
-            <span className="hidden sm:inline">&nbsp;· {site.googleReviewCount} reviews</span>
+            <Star className="h-3.5 w-3.5 fill-gold text-gold" />{" "}
+            {site.googleRating}
+            <span className="hidden sm:inline">
+              &nbsp;· {site.googleReviewCount} reviews
+            </span>
           </span>
         </motion.a>
 
@@ -58,8 +68,8 @@ export default function Hero() {
           transition={{ duration: 0.9, delay: 0.85, ease }}
           className="mx-auto mt-6 max-w-xl text-base leading-relaxed text-muted sm:text-lg"
         >
-          Astrology, Vastu and Numerology for your career, marriage, money, health and home, with clear guidance and practical
-          remedies.
+          Astrology, Vastu and Numerology for your career, marriage, money,
+          health and home, with clear guidance and practical remedies.
         </motion.p>
       </div>
 
@@ -71,7 +81,9 @@ export default function Hero() {
         className="relative z-10 mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row sm:gap-6"
       >
         <a
-          href={waLink("Namaste Saanvi ma'am, I am facing a problem and need your guidance.")}
+          href={waLink(
+            "Namaste Saanvi ma'am, I am facing a problem and need your guidance."
+          )}
           target="_blank"
           rel="noopener noreferrer"
           className="btn-gold group inline-flex items-center gap-3 rounded-full py-2 pl-7 pr-2 text-base font-semibold shadow-[0_0_30px_-5px_rgba(233,194,122,0.4)]"
@@ -81,7 +93,10 @@ export default function Hero() {
             <ArrowRight className="h-4 w-4" />
           </span>
         </a>
-        <a href={`tel:${site.phonePrimaryRaw}`} className="text-sm text-muted underline decoration-gold/40 underline-offset-[6px] transition hover:text-gold">
+        <a
+          href={`tel:${site.phonePrimaryRaw}`}
+          className="text-sm text-muted underline decoration-gold/40 underline-offset-[6px] transition hover:text-gold"
+        >
           or call {site.phonePrimary}
         </a>
       </motion.div>

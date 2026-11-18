@@ -25,14 +25,23 @@ export default function CtaBand({
             {title} <span className="text-gold-gradient">{highlight}</span>
           </h2>
           <p className="mx-auto mt-5 max-w-xl text-muted">
-            One conversation can change the direction of your life. Reach out on WhatsApp or call, and Saanvi&apos;s team will
-            schedule your consultation.
+            One conversation can change the direction of your life. Reach out on
+            WhatsApp or call, and Saanvi&apos;s team will schedule your
+            consultation.
           </p>
           <div className="mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row">
-            <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn-gold inline-flex w-full items-center justify-center gap-2 rounded-full px-8 py-4 font-semibold sm:w-auto">
+            <a
+              href={waLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn-gold inline-flex w-full items-center justify-center gap-2 rounded-full px-8 py-4 font-semibold sm:w-auto"
+            >
               <WhatsAppIcon className="h-5 w-5" /> Chat on WhatsApp
             </a>
-            <a href={`tel:${site.phonePrimaryRaw}`} className="btn-ghost inline-flex w-full items-center justify-center gap-2 rounded-full bg-night/40 px-8 py-4 font-medium sm:w-auto">
+            <a
+              href={`tel:${site.phonePrimaryRaw}`}
+              className="btn-ghost inline-flex w-full items-center justify-center gap-2 rounded-full bg-night/40 px-8 py-4 font-medium sm:w-auto"
+            >
               <Phone className="h-4 w-4 text-gold" /> Call {site.phonePrimary}
             </a>
           </div>

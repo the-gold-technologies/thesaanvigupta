@@ -8,9 +8,12 @@ export default function Achievements() {
       <div className="mx-auto grid max-w-7xl gap-8 px-5 sm:px-6 lg:grid-cols-2">
         <Reveal className="glass relative overflow-hidden rounded-[2rem] p-8 sm:p-10">
           <div className="pointer-events-none absolute -left-20 -top-20 h-60 w-60 rounded-full bg-gold/10 blur-3xl" />
-          <div className="text-xs font-semibold uppercase tracking-[0.35em] text-gold">✦ Honours</div>
+          <div className="text-xs font-semibold uppercase tracking-[0.35em] text-gold">
+            ✦ Honours
+          </div>
           <h2 className="mt-4 font-display text-3xl sm:text-4xl">
-            Recognised for <span className="text-gold-gradient">excellence</span>
+            Recognised for{" "}
+            <span className="text-gold-gradient">excellence</span>
           </h2>
           <ol className="relative mt-10 space-y-7 border-l border-gold/25 pl-8">
             {achievements.map((a) => (
@@ -20,7 +23,11 @@ export default function Achievements() {
                 </span>
                 <div className="flex flex-wrap items-baseline gap-2">
                   <h3 className="font-display text-lg text-ivory">{a.title}</h3>
-                  {a.year && <span className="rounded-full bg-saffron/15 px-2 py-0.5 text-xs text-saffron">{a.year}</span>}
+                  {a.year && (
+                    <span className="rounded-full bg-saffron/15 px-2 py-0.5 text-xs text-saffron">
+                      {a.year}
+                    </span>
+                  )}
                 </div>
                 <p className="mt-1 text-sm text-muted">{a.by}</p>
               </li>
@@ -28,11 +35,17 @@ export default function Achievements() {
           </ol>
         </Reveal>
 
-        <Reveal delay={0.1} className="relative overflow-hidden rounded-[2rem] border border-gold/20 bg-gradient-to-br from-violet/30 via-night-2/95 to-night/95 p-8 sm:p-10">
+        <Reveal
+          delay={0.1}
+          className="relative overflow-hidden rounded-[2rem] border border-gold/20 bg-gradient-to-br from-violet/30 via-night-2/95 to-night/95 p-8 sm:p-10"
+        >
           <div className="spin-slow pointer-events-none absolute -bottom-40 -right-40 h-96 w-96 rounded-full border border-dashed border-gold/15" />
-          <div className="text-xs font-semibold uppercase tracking-[0.35em] text-gold">✦ Why families trust her</div>
+          <div className="text-xs font-semibold uppercase tracking-[0.35em] text-gold">
+            ✦ Why families trust her
+          </div>
           <h2 className="mt-4 font-display text-3xl sm:text-4xl">
-            Guidance that is <span className="text-gold-gradient">honest & practical</span>
+            Guidance that is{" "}
+            <span className="text-gold-gradient">honest & practical</span>
           </h2>
           <ul className="mt-10 space-y-5">
             {whyUs.map((w) => (

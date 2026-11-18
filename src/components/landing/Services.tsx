@@ -6,10 +6,7 @@ import { Heading } from "./Ornament";
 import { services } from "@/lib/site";
 
 /** Per-service tint, taken from the ruling graha — like the coloured cards in the reference dashboard. */
-const TINT: Record<
-  string,
-  { ring: string; label: string; span: string }
-> = {
+const TINT: Record<string, { ring: string; label: string; span: string }> = {
   "astrology-reading": {
     ring: "#e3c9a6",
     label: "Sun · Surya",
@@ -37,7 +34,9 @@ const TINT: Record<
   },
 };
 
-export default function Services({ showHeading = true }: { showHeading?: boolean } = {}) {
+export default function Services({
+  showHeading = true,
+}: { showHeading?: boolean } = {}) {
   return (
     <section
       id="services"

@@ -14,13 +14,13 @@ npm run build && npm start
 
 ## Pages
 
-| Route | Contents |
-| --- | --- |
-| `/` | Hero with rotating zodiac wheel, "What's troubling you?" problem solver, services, about, process, free numerology calculator, Google reviews, honours, FAQ, CTA |
-| `/about` | Story, philosophy, journey timeline, honours, reviews |
-| `/services` | All services, problem solver and process |
-| `/services/[slug]` | Astrology, Vastu, Numerology, Prashna Kundali and Tarot detail pages (statically generated) |
-| `/contact` | Contact cards, a booking form that opens WhatsApp with the details prefilled, map and FAQ |
+| Route              | Contents                                                                                                                                                         |
+| ------------------ | ---------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/`                | Hero with rotating zodiac wheel, "What's troubling you?" problem solver, services, about, process, free numerology calculator, Google reviews, honours, FAQ, CTA |
+| `/about`           | Story, philosophy, journey timeline, honours, reviews                                                                                                            |
+| `/services`        | All services, problem solver and process                                                                                                                         |
+| `/services/[slug]` | Astrology, Vastu, Numerology, Prashna Kundali and Tarot detail pages (statically generated)                                                                      |
+| `/contact`         | Contact cards, a booking form that opens WhatsApp with the details prefilled, map and FAQ                                                                        |
 
 ## Editing content
 

@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
-import { services, site, waLink } from "@/lib/site";
+import { services, waLink } from "@/lib/site";
 
 const links = [
   { label: "Home", href: "/" },
@@ -47,25 +47,45 @@ export default function Navbar() {
         }`}
       >
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2.5 sm:px-6">
-          <Link href="/" className="group flex items-center gap-3" aria-label="Aacharya Saanvi Gupta — Home">
-            <Image src="/images/logo.png" alt="" width={56} height={54} className="h-12 w-12 object-contain transition group-hover:scale-105 sm:h-14 sm:w-14" preload />
+          <Link
+            href="/"
+            className="group flex items-center gap-3"
+            aria-label="Aacharya Saanvi Gupta — Home"
+          >
+            <Image
+              src="/images/logo.png"
+              alt=""
+              width={56}
+              height={54}
+              className="h-12 w-12 object-contain transition group-hover:scale-105 sm:h-14 sm:w-14"
+              preload
+            />
             <span className="leading-tight">
-              <span className="block font-display text-base tracking-wide text-bronze-deep sm:text-lg">Saanvi Gupta</span>
-              <span className="block text-[9px] uppercase tracking-[0.32em] text-bronze sm:text-[10px]">Aacharya · Astro · Vastu</span>
+              <span className="block font-display text-base tracking-wide text-bronze-deep sm:text-lg">
+                Saanvi Gupta
+              </span>
+              <span className="block text-[9px] uppercase tracking-[0.32em] text-bronze sm:text-[10px]">
+                Aacharya · Astro · Vastu
+              </span>
             </span>
           </Link>
 
           <ul className="hidden items-center gap-1 lg:flex">
             {links.map((l) => {
-              const active = l.dropdown ? pathname.startsWith("/services") : pathname === l.href;
+              const active = l.dropdown
+                ? pathname.startsWith("/services")
+                : pathname === l.href;
               const cls = `relative flex items-center gap-1 px-3.5 py-2 text-sm font-medium transition hover:text-bronze ${
                 active ? "text-bronze" : "text-midnight/80"
               }`;
-              const underline = active && <span className="absolute inset-x-3.5 -bottom-0.5 h-px bg-bronze" />;
+              const underline = active && (
+                <span className="absolute inset-x-3.5 -bottom-0.5 h-px bg-bronze" />
+              );
               return l.dropdown ? (
                 <li key={l.label} className="group relative">
                   <Link href={l.href} className={cls}>
-                    {l.label} <ChevronDown className="h-3.5 w-3.5 transition group-hover:rotate-180" />
+                    {l.label}{" "}
+                    <ChevronDown className="h-3.5 w-3.5 transition group-hover:rotate-180" />
                     {underline}
                   </Link>
                   <div className="invisible absolute left-1/2 top-full w-72 -translate-x-1/2 pt-3 opacity-0 transition-all duration-300 group-hover:visible group-hover:opacity-100">
@@ -76,7 +96,9 @@ export default function Navbar() {
                           href={`/services/${s.slug}`}
                           className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-cocoa transition hover:bg-parchment hover:text-bronze-deep"
                         >
-                          <span className="glyph grid h-8 w-8 place-items-center rounded-full border border-bronze/30 text-bronze">{s.glyph}</span>
+                          <span className="glyph grid h-8 w-8 place-items-center rounded-full border border-bronze/30 text-bronze">
+                            {s.glyph}
+                          </span>
                           {s.title}
                         </Link>
                       ))}
@@ -124,18 +146,32 @@ export default function Navbar() {
             >
               <div className="max-h-[calc(100dvh-80px)] space-y-1 overflow-y-auto px-4 py-4">
                 {links.map((l) => (
-                  <Link key={l.label} href={l.href} className="block rounded-xl px-4 py-3 font-medium text-midnight hover:bg-parchment hover:text-bronze-deep">
+                  <Link
+                    key={l.label}
+                    href={l.href}
+                    className="block rounded-xl px-4 py-3 font-medium text-midnight hover:bg-parchment hover:text-bronze-deep"
+                  >
                     {l.label}
                   </Link>
                 ))}
                 <div className="grid grid-cols-1 gap-1 border-t border-bronze/15 pt-2">
                   {services.map((s) => (
-                    <Link key={s.slug} href={`/services/${s.slug}`} className="flex items-center gap-3 rounded-xl px-4 py-2 text-sm text-cocoa/75 hover:text-bronze-deep">
-                      <span className="glyph text-bronze">{s.glyph}</span> {s.title}
+                    <Link
+                      key={s.slug}
+                      href={`/services/${s.slug}`}
+                      className="flex items-center gap-3 rounded-xl px-4 py-2 text-sm text-cocoa/75 hover:text-bronze-deep"
+                    >
+                      <span className="glyph text-bronze">{s.glyph}</span>{" "}
+                      {s.title}
                     </Link>
                   ))}
                 </div>
-                <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn-midnight mt-3 block rounded-full px-5 py-3 text-center font-semibold">
+                <a
+                  href={waLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn-midnight mt-3 block rounded-full px-5 py-3 text-center font-semibold"
+                >
                   Book Consultation on WhatsApp
                 </a>
               </div>

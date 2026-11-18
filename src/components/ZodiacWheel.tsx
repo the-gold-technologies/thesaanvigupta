@@ -16,13 +16,23 @@ const SIGNS = [
 const C = 300;
 const pt = (r: number, deg: number) => {
   const a = ((deg - 90) * Math.PI) / 180;
-  return { x: +(C + r * Math.cos(a)).toFixed(2), y: +(C + r * Math.sin(a)).toFixed(2) };
+  return {
+    x: +(C + r * Math.cos(a)).toFixed(2),
+    y: +(C + r * Math.sin(a)).toFixed(2),
+  };
 };
 
 /** Navagraha planets on orbits — exact original brand palette & positions from reference */
 const PLANETS = [
   { r: 178, deg: 20, size: 7, color: "#f07a3a", glow: "#ff9e66" }, // Sun (Surya - solar gold/orange)
-  { r: 178, deg: 200, size: 6, color: "#ffffff", stroke: "rgba(138,106,84,0.55)", glow: "#dfd5c4" }, // Moon (Chandra - pearl white)
+  {
+    r: 178,
+    deg: 200,
+    size: 6,
+    color: "#ffffff",
+    stroke: "rgba(138,106,84,0.55)",
+    glow: "#dfd5c4",
+  }, // Moon (Chandra - pearl white)
   { r: 150, deg: 110, size: 5, color: "#e2553a", glow: "#ff8a6a" }, // Mars (Mangal - ruby coral)
   { r: 150, deg: 290, size: 4.5, color: "#42b87c", glow: "#82e4b0" }, // Mercury (Budh - emerald)
   { r: 122, deg: 60, size: 6, color: "#e5b934", glow: "#ffdf79" }, // Jupiter (Guru - topaz gold)
@@ -30,7 +40,11 @@ const PLANETS = [
   { r: 178, deg: 320, size: 5.5, color: "#4f65db", glow: "#95a3ff" }, // Saturn (Shani - sapphire blue)
 ];
 
-export default function ZodiacWheel({ className = "" }: { className?: string }) {
+export default function ZodiacWheel({
+  className = "",
+}: {
+  className?: string;
+}) {
   return (
     <svg viewBox="0 0 600 600" className={className} aria-hidden>
       <defs>
@@ -58,9 +72,33 @@ export default function ZodiacWheel({ className = "" }: { className?: string }) 
 
       {/* Outer rotating ring: degree ticks + zodiac band */}
       <g className="spin-slow" style={{ transformOrigin: "300px 300px" }}>
-        <circle cx={C} cy={C} r={292} fill="none" stroke="url(#zw-bronze)" strokeOpacity="0.75" strokeWidth="0.9" />
-        <circle cx={C} cy={C} r={250} fill="none" stroke="url(#zw-bronze)" strokeOpacity="0.7" strokeWidth="0.9" />
-        <circle cx={C} cy={C} r={226} fill="none" stroke="#8a6a54" strokeOpacity="0.45" strokeWidth="0.8" />
+        <circle
+          cx={C}
+          cy={C}
+          r={292}
+          fill="none"
+          stroke="url(#zw-bronze)"
+          strokeOpacity="0.75"
+          strokeWidth="0.9"
+        />
+        <circle
+          cx={C}
+          cy={C}
+          r={250}
+          fill="none"
+          stroke="url(#zw-bronze)"
+          strokeOpacity="0.7"
+          strokeWidth="0.9"
+        />
+        <circle
+          cx={C}
+          cy={C}
+          r={226}
+          fill="none"
+          stroke="#8a6a54"
+          strokeOpacity="0.45"
+          strokeWidth="0.8"
+        />
         {Array.from({ length: 72 }).map((_, i) => {
           const a = pt(292, i * 5);
           const b = pt(i % 6 === 0 ? 278 : 285, i * 5);
@@ -84,7 +122,15 @@ export default function ZodiacWheel({ className = "" }: { className?: string }) 
           const n = pt(238, i * 30 + 15);
           return (
             <g key={s.n}>
-              <line x1={d1.x} y1={d1.y} x2={d2.x} y2={d2.y} stroke="#8a6a54" strokeOpacity="0.65" strokeWidth="0.8" />
+              <line
+                x1={d1.x}
+                y1={d1.y}
+                x2={d2.x}
+                y2={d2.y}
+                stroke="#8a6a54"
+                strokeOpacity="0.65"
+                strokeWidth="0.8"
+              />
               <text
                 x={g.x}
                 y={g.y}
@@ -117,17 +163,37 @@ export default function ZodiacWheel({ className = "" }: { className?: string }) 
 
       {/* Middle counter-rotating ring: 27 nakshatra ticks + constellation web */}
       <g className="spin-slower" style={{ transformOrigin: "300px 300px" }}>
-        <circle cx={C} cy={C} r={206} fill="none" stroke="#8a6a54" strokeOpacity="0.5" strokeDasharray="2 6" strokeWidth="0.9" />
+        <circle
+          cx={C}
+          cy={C}
+          r={206}
+          fill="none"
+          stroke="#8a6a54"
+          strokeOpacity="0.5"
+          strokeDasharray="2 6"
+          strokeWidth="0.9"
+        />
         {Array.from({ length: 27 }).map((_, i) => {
           const a = pt(206, (i * 360) / 27);
-          return <circle key={i} cx={a.x} cy={a.y} r={1.9} fill="#b48a4a" opacity="0.85" />;
+          return (
+            <circle
+              key={i}
+              cx={a.x}
+              cy={a.y}
+              r={1.9}
+              fill="#b48a4a"
+              opacity="0.85"
+            />
+          );
         })}
         {/* Constellation web polygon */}
         <polygon
-          points={[0, 4, 9, 13, 18, 22].map((i) => {
-            const p = pt(206, (i * 360) / 27);
-            return `${p.x},${p.y}`;
-          }).join(" ")}
+          points={[0, 4, 9, 13, 18, 22]
+            .map((i) => {
+              const p = pt(206, (i * 360) / 27);
+              return `${p.x},${p.y}`;
+            })
+            .join(" ")}
           fill="none"
           stroke="#b48a4a"
           strokeOpacity="0.4"
@@ -138,14 +204,30 @@ export default function ZodiacWheel({ className = "" }: { className?: string }) 
       {/* Planet orbits & glowing Navagraha spheres */}
       <g className="spin-mid" style={{ transformOrigin: "300px 300px" }}>
         {[178, 150, 122].map((r) => (
-          <circle key={r} cx={C} cy={C} r={r} fill="none" stroke="#8a6a54" strokeOpacity="0.4" strokeWidth="0.8" />
+          <circle
+            key={r}
+            cx={C}
+            cy={C}
+            r={r}
+            fill="none"
+            stroke="#8a6a54"
+            strokeOpacity="0.4"
+            strokeWidth="0.8"
+          />
         ))}
         {PLANETS.map((p, i) => {
           const c = pt(p.r, p.deg);
           return (
             <g key={i}>
               {/* Soft luminous atmospheric glow */}
-              <circle cx={c.x} cy={c.y} r={p.size * 2.2} fill={p.glow} opacity="0.32" filter="url(#zw-glow)" />
+              <circle
+                cx={c.x}
+                cy={c.y}
+                r={p.size * 2.2}
+                fill={p.glow}
+                opacity="0.32"
+                filter="url(#zw-glow)"
+              />
               {/* Crisp spherical planet body */}
               <circle
                 cx={c.x}
@@ -165,7 +247,17 @@ export default function ZodiacWheel({ className = "" }: { className?: string }) 
         {Array.from({ length: 8 }).map((_, i) => {
           const a = pt(108, i * 45);
           const b = pt(108, i * 45 + 135);
-          return <line key={i} x1={a.x} y1={a.y} x2={b.x} y2={b.y} stroke="#8a6a54" strokeWidth="0.8" />;
+          return (
+            <line
+              key={i}
+              x1={a.x}
+              y1={a.y}
+              x2={b.x}
+              y2={b.y}
+              stroke="#8a6a54"
+              strokeWidth="0.8"
+            />
+          );
         })}
       </g>
     </svg>
