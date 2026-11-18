@@ -10,6 +10,22 @@
   --saffron: #f07a3a;
   --ivory: #f6eedc;
   --muted: #c4bcd8;
+
+  /* Logo palette: bronze script on ivory, with navagraha accents */
+  --cream: #fbf7ef;
+  --parchment: #f4ecdf;
+  --sand: #e8dbc6;
+  --bronze: #8a6a54;
+  --bronze-deep: #5c4334;
+  --cocoa: #2b1f18;
+  --antique: #b48a4a;
+  --midnight: #10142b;
+  --midnight-2: #1a1f3f;
+  --sun: #e0592a;
+  --mercury: #3e8a52;
+  --jupiter: #e2b021;
+  --mars: #c23a2c;
+  --water: #3b78b8;
 }
 
 @theme inline {
@@ -22,6 +38,21 @@
   --color-saffron: var(--saffron);
   --color-ivory: var(--ivory);
   --color-muted: var(--muted);
+  --color-cream: var(--cream);
+  --color-parchment: var(--parchment);
+  --color-sand: var(--sand);
+  --color-bronze: var(--bronze);
+  --color-bronze-deep: var(--bronze-deep);
+  --color-cocoa: var(--cocoa);
+  --color-antique: var(--antique);
+  --color-midnight: var(--midnight);
+  --color-midnight-2: var(--midnight-2);
+  --color-sun: var(--sun);
+  --color-mercury: var(--mercury);
+  --color-jupiter: var(--jupiter);
+  --color-mars: var(--mars);
+  --color-water: var(--water);
+  --font-script: var(--font-allura);
   --font-display: var(--font-cinzel);
   --font-serif: var(--font-cormorant);
   --font-sans: var(--font-manrope);
@@ -149,9 +180,59 @@ body {
   font-variant-emoji: text;
 }
 
+/* ---------- Light (logo) theme utilities ---------- */
+.btn-midnight {
+  background: var(--midnight);
+  color: var(--cream);
+  box-shadow: 0 0 0 1px rgba(180, 138, 74, 0.35) inset, 0 14px 34px -14px rgba(16, 20, 43, 0.65);
+  transition: transform 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+}
+.btn-midnight:hover {
+  transform: translateY(-2px);
+  background: var(--midnight-2);
+  box-shadow: 0 0 0 1px rgba(180, 138, 74, 0.6) inset, 0 20px 40px -14px rgba(16, 20, 43, 0.75);
+}
+
+.btn-bronze-line {
+  border: 1px solid rgba(138, 106, 84, 0.45);
+  color: var(--bronze-deep);
+  transition: background 0.25s ease, border-color 0.25s ease;
+}
+.btn-bronze-line:hover {
+  background: rgba(138, 106, 84, 0.08);
+  border-color: var(--bronze);
+}
+
+/* fine parchment grain + soft warm light */
+.paper {
+  background-color: var(--cream);
+  background-image:
+    radial-gradient(60% 50% at 85% 10%, rgba(226, 176, 33, 0.07), transparent 70%),
+    radial-gradient(50% 40% at 5% 90%, rgba(138, 106, 84, 0.07), transparent 70%);
+}
+
+/* deep night sky with a tiny repeating star pattern */
+.sky {
+  background-color: var(--midnight);
+  background-image:
+    radial-gradient(1px 1px at 20px 30px, rgba(255, 240, 210, 0.7), transparent 60%),
+    radial-gradient(1px 1px at 90px 80px, rgba(255, 240, 210, 0.45), transparent 60%),
+    radial-gradient(1.5px 1.5px at 150px 20px, rgba(233, 194, 122, 0.6), transparent 60%),
+    radial-gradient(1px 1px at 60px 140px, rgba(255, 255, 255, 0.35), transparent 60%),
+    radial-gradient(1px 1px at 170px 160px, rgba(255, 240, 210, 0.5), transparent 60%),
+    radial-gradient(70% 60% at 50% 0%, rgba(59, 35, 112, 0.35), transparent 70%);
+  background-size: 200px 200px, 200px 200px, 200px 200px, 200px 200px, 200px 200px, 100% 100%;
+}
+
+.hairline-bronze {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(138, 106, 84, 0.5), transparent);
+}
+
 @media (prefers-reduced-motion: reduce) {
   .spin-slow, .spin-slower, .spin-mid, .float, .pulse-ring, .marquee, .text-gold-gradient {
     animation: none !important;
   }
   html { scroll-behavior: auto; }
 }
+

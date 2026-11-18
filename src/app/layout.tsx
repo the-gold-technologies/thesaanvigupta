@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cinzel, Cormorant_Garamond, Manrope } from "next/font/google";
+import { Allura, Cinzel, Cormorant_Garamond, Manrope } from "next/font/google";
 import "./globals.css";
 import StarField from "@/components/StarField";
 import Navbar from "@/components/Navbar";
@@ -15,6 +15,8 @@ const cormorant = Cormorant_Garamond({
   style: ["normal", "italic"],
 });
 const manrope = Manrope({ variable: "--font-manrope", subsets: ["latin"] });
+// Flowing script that echoes the hand-lettered "asg" in the logo
+const allura = Allura({ variable: "--font-allura", subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
@@ -70,7 +72,7 @@ const jsonLd = {
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={`${cinzel.variable} ${cormorant.variable} ${manrope.variable} antialiased`}>
+    <html lang="en" className={`${cinzel.variable} ${cormorant.variable} ${manrope.variable} ${allura.variable} antialiased`}>
       <body className="relative min-h-screen">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <StarField />

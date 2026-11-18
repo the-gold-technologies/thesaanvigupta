@@ -5,8 +5,9 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ChevronDown, Menu, X } from "lucide-react";
-import { services, waLink } from "@/lib/site";
+import { ChevronDown, Mail, Menu, Phone, X } from "lucide-react";
+import { services, site, waLink } from "@/lib/site";
+import { FacebookIcon, InstagramIcon, LinkedInIcon } from "./Icons";
 
 const links = [
   { label: "Home", href: "/" },
@@ -38,43 +39,76 @@ export default function Navbar() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
-      <nav
-        className={`transition-all duration-500 ${
-          scrolled ? "border-b border-gold/15 bg-night/80 shadow-[0_10px_40px_-20px_rgba(0,0,0,0.8)] backdrop-blur-xl" : "bg-transparent"
+      {/* ── Utility strip (desktop, collapses on scroll) ── */}
+      <div
+        className={`hidden overflow-hidden bg-midnight text-cream/75 transition-all duration-500 lg:block ${
+          scrolled ? "max-h-0 opacity-0" : "max-h-10 opacity-100"
         }`}
       >
-        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3 sm:px-6">
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-6 py-2 text-xs">
+          <p className="tracking-[0.2em] uppercase">
+            Ancient wisdom <span className="text-gold">✦</span> Modern insight <span className="text-gold">✦</span> Personal guidance
+          </p>
+          <div className="flex items-center gap-5">
+            <a href={`tel:${site.phonePrimaryRaw}`} className="flex items-center gap-1.5 hover:text-gold">
+              <Phone className="h-3.5 w-3.5 text-gold" /> {site.phonePrimary}
+            </a>
+            <a href={`mailto:${site.email}`} className="flex items-center gap-1.5 hover:text-gold">
+              <Mail className="h-3.5 w-3.5 text-gold" /> {site.email}
+            </a>
+            <span className="h-3 w-px bg-cream/20" />
+            {[
+              { href: site.socials.instagram, Icon: InstagramIcon, label: "Instagram" },
+              { href: site.socials.facebook, Icon: FacebookIcon, label: "Facebook" },
+              { href: site.socials.linkedin, Icon: LinkedInIcon, label: "LinkedIn" },
+            ].map(({ href, Icon, label }) => (
+              <a key={label} href={href} target="_blank" rel="noopener noreferrer" aria-label={label} className="hover:text-gold">
+                <Icon className="h-3.5 w-3.5" />
+              </a>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* ── Main bar ── */}
+      <nav
+        className={`border-b transition-all duration-500 ${
+          scrolled
+            ? "border-bronze/20 bg-cream/95 shadow-[0_12px_30px_-20px_rgba(43,31,24,0.5)] backdrop-blur-xl"
+            : "border-bronze/10 bg-cream/[0.97] backdrop-blur-md"
+        }`}
+      >
+        <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2.5 sm:px-6">
           <Link href="/" className="group flex items-center gap-3" aria-label="Aacharya Saanvi Gupta — Home">
-            <span className="relative grid h-12 w-12 place-items-center rounded-full bg-ivory/95 p-1 ring-1 ring-gold/50 transition group-hover:ring-gold">
-              <Image src="/images/logo.png" alt="" width={44} height={44} className="h-10 w-10 object-contain" priority />
-            </span>
+            <Image src="/images/logo.png" alt="" width={56} height={54} className="h-12 w-12 object-contain transition group-hover:scale-105 sm:h-14 sm:w-14" preload />
             <span className="leading-tight">
-              <span className="block font-display text-base tracking-wide text-ivory sm:text-lg">Saanvi Gupta</span>
-              <span className="block text-[10px] uppercase tracking-[0.3em] text-gold">Aacharya · Astro · Vastu</span>
+              <span className="block font-display text-base tracking-wide text-bronze-deep sm:text-lg">Saanvi Gupta</span>
+              <span className="block text-[9px] uppercase tracking-[0.32em] text-bronze sm:text-[10px]">Aacharya · Astro · Vastu</span>
             </span>
           </Link>
 
           <ul className="hidden items-center gap-1 lg:flex">
-            {links.map((l) =>
-              l.dropdown ? (
+            {links.map((l) => {
+              const active = l.dropdown ? pathname.startsWith("/services") : pathname === l.href;
+              const cls = `relative flex items-center gap-1 px-3.5 py-2 text-sm font-medium transition hover:text-bronze ${
+                active ? "text-bronze" : "text-midnight/80"
+              }`;
+              const underline = active && <span className="absolute inset-x-3.5 -bottom-0.5 h-px bg-bronze" />;
+              return l.dropdown ? (
                 <li key={l.label} className="group relative">
-                  <Link
-                    href={l.href}
-                    className={`flex items-center gap-1 rounded-full px-4 py-2 text-sm transition hover:text-gold ${
-                      pathname.startsWith("/services") ? "text-gold" : "text-ivory/85"
-                    }`}
-                  >
+                  <Link href={l.href} className={cls}>
                     {l.label} <ChevronDown className="h-3.5 w-3.5 transition group-hover:rotate-180" />
+                    {underline}
                   </Link>
                   <div className="invisible absolute left-1/2 top-full w-72 -translate-x-1/2 pt-3 opacity-0 transition-all duration-300 group-hover:visible group-hover:opacity-100">
-                    <div className="glass rounded-2xl p-2 shadow-2xl">
+                    <div className="rounded-2xl border border-bronze/15 bg-cream p-2 shadow-[0_30px_60px_-25px_rgba(43,31,24,0.45)]">
                       {services.map((s) => (
                         <Link
                           key={s.slug}
                           href={`/services/${s.slug}`}
-                          className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-ivory/90 transition hover:bg-gold/10 hover:text-gold"
+                          className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-cocoa transition hover:bg-parchment hover:text-bronze-deep"
                         >
-                          <span className="glyph grid h-8 w-8 place-items-center rounded-full border border-gold/30 text-gold">{s.glyph}</span>
+                          <span className="glyph grid h-8 w-8 place-items-center rounded-full border border-bronze/30 text-bronze">{s.glyph}</span>
                           {s.title}
                         </Link>
                       ))}
@@ -83,17 +117,13 @@ export default function Navbar() {
                 </li>
               ) : (
                 <li key={l.label}>
-                  <Link
-                    href={l.href}
-                    className={`rounded-full px-4 py-2 text-sm transition hover:text-gold ${
-                      pathname === l.href ? "text-gold" : "text-ivory/85"
-                    }`}
-                  >
+                  <Link href={l.href} className={cls}>
                     {l.label}
+                    {underline}
                   </Link>
                 </li>
-              ),
-            )}
+              );
+            })}
           </ul>
 
           <div className="flex items-center gap-2">
@@ -101,13 +131,13 @@ export default function Navbar() {
               href={waLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-gold hidden rounded-full px-5 py-2.5 text-sm font-semibold sm:inline-flex"
+              className="btn-midnight hidden rounded-full px-5 py-2.5 text-sm font-semibold sm:inline-flex"
             >
               Book Consultation
             </a>
             <button
               onClick={() => setOpen((v) => !v)}
-              className="grid h-11 w-11 place-items-center rounded-full border border-gold/30 text-gold lg:hidden"
+              className="grid h-11 w-11 place-items-center rounded-full border border-bronze/30 text-bronze-deep lg:hidden"
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
             >
@@ -122,22 +152,22 @@ export default function Navbar() {
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
-              className="overflow-hidden border-t border-gold/10 bg-night/95 backdrop-blur-xl lg:hidden"
+              className="overflow-hidden border-t border-bronze/15 bg-cream lg:hidden"
             >
-              <div className="space-y-1 px-4 py-4">
+              <div className="max-h-[calc(100dvh-80px)] space-y-1 overflow-y-auto px-4 py-4">
                 {links.map((l) => (
-                  <Link key={l.label} href={l.href} className="block rounded-xl px-4 py-3 text-ivory/90 hover:bg-gold/10 hover:text-gold">
+                  <Link key={l.label} href={l.href} className="block rounded-xl px-4 py-3 font-medium text-midnight hover:bg-parchment hover:text-bronze-deep">
                     {l.label}
                   </Link>
                 ))}
-                <div className="grid grid-cols-1 gap-1 border-t border-gold/10 pt-2">
+                <div className="grid grid-cols-1 gap-1 border-t border-bronze/15 pt-2">
                   {services.map((s) => (
-                    <Link key={s.slug} href={`/services/${s.slug}`} className="flex items-center gap-3 rounded-xl px-4 py-2 text-sm text-muted hover:text-gold">
-                      <span className="glyph text-gold">{s.glyph}</span> {s.title}
+                    <Link key={s.slug} href={`/services/${s.slug}`} className="flex items-center gap-3 rounded-xl px-4 py-2 text-sm text-cocoa/75 hover:text-bronze-deep">
+                      <span className="glyph text-bronze">{s.glyph}</span> {s.title}
                     </Link>
                   ))}
                 </div>
-                <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn-gold mt-3 block rounded-full px-5 py-3 text-center font-semibold">
+                <a href={waLink()} target="_blank" rel="noopener noreferrer" className="btn-midnight mt-3 block rounded-full px-5 py-3 text-center font-semibold">
                   Book Consultation on WhatsApp
                 </a>
               </div>
