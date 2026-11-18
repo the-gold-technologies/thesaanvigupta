@@ -3,7 +3,7 @@
 import Image from "next/image";
 import { motion } from "framer-motion";
 import { ArrowRight, Star } from "lucide-react";
-import NatalChart from "@/components/NatalChart";
+import ZodiacWheel from "@/components/ZodiacWheel";
 import { site, waLink } from "@/lib/site";
 
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -94,7 +94,7 @@ export default function Hero() {
           transition={{ duration: 1.8, delay: 0.2, ease }}
           className="relative mx-auto w-full max-w-[620px]"
         >
-          <NatalChart className="h-full w-full drop-shadow-[0_0_40px_rgba(233,194,122,0.15)]" />
+          <ZodiacWheel className="h-full w-full drop-shadow-[0_0_40px_rgba(233,194,122,0.15)]" />
         </motion.div>
       </div>
     </section>

@@ -64,7 +64,7 @@ export default function Problems() {
             role="tabpanel"
           >
             {/* headline tile */}
-            <div className="relative overflow-hidden rounded-3xl border border-latte/25 bg-gradient-to-br from-umber to-[#5a4636] p-7 shadow-[0_30px_60px_-40px_rgba(0,0,0,0.6)] md:col-span-2 sm:p-9">
+            <div className="relative overflow-hidden rounded-3xl border border-latte/25 bg-gradient-to-br from-[#93683f] via-[#66513f] to-[#4a3e35] p-7 shadow-[0_30px_60px_-40px_rgba(62,54,46,0.6)] md:col-span-2 sm:p-9">
               <span className="pointer-events-none absolute -bottom-20 left-1/3 h-48 w-[520px] rounded-full bg-[radial-gradient(closest-side,rgba(227,201,166,0.25),transparent)]" />
               <div className="relative flex flex-col gap-6 sm:flex-row sm:items-center">
                 <span className="grid h-20 w-20 shrink-0 place-items-center rounded-full border border-latte/60 bg-white/10 text-latte shadow-[0_0_40px_-12px_#e3c9a6]">

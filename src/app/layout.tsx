@@ -73,7 +73,7 @@ const jsonLd = {
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="en" className={`${cinzel.variable} ${cormorant.variable} ${manrope.variable} ${allura.variable} antialiased`}>
-      <body className="relative min-h-screen">
+      <body className="relative min-h-screen bg-cream text-cocoa">
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
         <StarField />
         <Navbar />

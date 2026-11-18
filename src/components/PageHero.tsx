@@ -17,24 +17,51 @@ export default function PageHero({
   crumbs: { label: string; href?: string }[];
 }) {
   return (
-    <section className="relative overflow-hidden pb-16 pt-40 md:pb-24 md:pt-48">
-      <ZodiacWheel className="pointer-events-none absolute -right-48 -top-24 h-[640px] w-[640px] opacity-40 md:-right-24" />
-      <div className="relative mx-auto max-w-7xl px-5 sm:px-6">
+    <section className="paper relative overflow-hidden pt-32 pb-16 sm:pt-36 sm:pb-20 lg:pt-40 lg:pb-24 lg:min-h-[640px] flex flex-col justify-center">
+      <ZodiacWheel className="pointer-events-none absolute z-0 right-[-6%] sm:right-2 lg:right-10 top-24 sm:top-24 lg:top-20 h-[420px] w-[420px] sm:h-[480px] sm:w-[480px] lg:h-[520px] lg:w-[520px] opacity-85" />
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-5 sm:px-6">
         <Reveal>
-          <nav aria-label="Breadcrumb" className="flex flex-wrap items-center gap-1 text-xs text-muted">
-            <Link href="/" className="hover:text-gold">Home</Link>
+          <nav
+            aria-label="Breadcrumb"
+            className="flex flex-wrap items-center gap-1.5 text-xs text-cocoa/60"
+          >
+            <Link href="/" className="hover:text-bronze-deep transition">
+              Home
+            </Link>
             {crumbs.map((c) => (
-              <span key={c.label} className="flex items-center gap-1">
-                <ChevronRight className="h-3 w-3" />
-                {c.href ? <Link href={c.href} className="hover:text-gold">{c.label}</Link> : <span className="text-gold">{c.label}</span>}
+              <span key={c.label} className="flex items-center gap-1.5">
+                <ChevronRight className="h-3 w-3 text-bronze/50" />
+                {c.href ? (
+                  <Link
+                    href={c.href}
+                    className="hover:text-bronze-deep transition"
+                  >
+                    {c.label}
+                  </Link>
+                ) : (
+                  <span className="font-semibold text-bronze-deep">
+                    {c.label}
+                  </span>
+                )}
               </span>
             ))}
           </nav>
-          <div className="mt-8 text-xs font-semibold uppercase tracking-[0.35em] text-gold">✦ {eyebrow}</div>
-          <h1 className="mt-5 max-w-4xl font-display text-4xl leading-tight text-ivory sm:text-5xl md:text-6xl">
-            {title} {highlight && <span className="text-gold-gradient">{highlight}</span>}
+          <div className="mt-8 text-xs font-semibold uppercase tracking-[0.35em] text-bronze">
+            ✦ {eyebrow}
+          </div>
+          <h1 className="mt-4 max-w-4xl font-display text-3xl uppercase leading-[1.08] text-midnight sm:text-5xl md:text-[3.5rem]">
+            <span className="block">{title}</span>
+            {highlight && (
+              <span className="mt-[1px] block font-script normal-case leading-[0.88] text-bronze text-[1.25em] sm:-mt-[5px] sm:text-[1.35em]">
+                {highlight}
+              </span>
+            )}
           </h1>
-          {sub && <p className="mt-6 max-w-2xl text-lg leading-relaxed text-muted">{sub}</p>}
+          {sub && (
+            <p className="mt-6 max-w-2xl text-lg leading-relaxed text-cocoa/75">
+              {sub}
+            </p>
+          )}
         </Reveal>
       </div>
     </section>

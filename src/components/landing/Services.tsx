@@ -37,19 +37,21 @@ const TINT: Record<
   },
 };
 
-export default function Services() {
+export default function Services({ showHeading = true }: { showHeading?: boolean } = {}) {
   return (
     <section
       id="services"
       className="paper relative scroll-mt-24 py-24 md:py-32"
     >
       <div className="mx-auto max-w-7xl px-5 sm:px-6">
-        <Heading
-          eyebrow="Our services"
-          title="Ancient sciences,"
-          script="answers for today"
-          sub="Five time-tested disciplines, one goal: clear guidance and remedies you can actually follow."
-        />
+        {showHeading && (
+          <Heading
+            eyebrow="Our services"
+            title="Ancient sciences,"
+            script="answers for today"
+            sub="Five time-tested disciplines, one goal: clear guidance and remedies you can actually follow."
+          />
+        )}
 
         <div className="mt-16 grid gap-5 md:grid-cols-2 lg:grid-cols-6 lg:grid-rows-[auto_auto_auto]">
           {services.map((s, i) => {

@@ -95,7 +95,7 @@ export default function Numerology() {
 
         {/* energy card */}
         <Reveal delay={0.1}>
-          <div className="relative min-h-[420px] overflow-hidden rounded-[2rem] border border-umber/40 bg-gradient-to-br from-umber to-mocha p-6 shadow-[0_40px_80px_-40px_rgba(62,54,46,0.8)] sm:p-8">
+          <div className="relative min-h-[420px] overflow-hidden rounded-[2rem] border border-umber/40 bg-gradient-to-br from-[#93683f] via-[#66513f] to-[#4a3e35] p-6 shadow-[0_40px_80px_-40px_rgba(62,54,46,0.6)] sm:p-8">
             <div className="text-[11px] uppercase font-semibold tracking-[0.3em] text-latte">Your number energy</div>
             <AnimatePresence mode="wait">
               {result ? (

@@ -3,7 +3,7 @@ import { Clock, Mail, MapPin, Phone } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import ContactForm from "@/components/ContactForm";
-import Faq from "@/components/home/Faq";
+import FaqSection from "@/components/landing/FaqSection";
 import { FacebookIcon, InstagramIcon, LinkedInIcon, WhatsAppIcon } from "@/components/Icons";
 import { site, waLink } from "@/lib/site";
 
@@ -21,7 +21,7 @@ export default function ContactPage() {
   ];
 
   return (
-    <>
+    <div className="bg-cream text-cocoa">
       <PageHero
         eyebrow="Contact"
         title="Let's begin your"
@@ -38,25 +38,25 @@ export default function ContactPage() {
                 <a
                   href={href}
                   {...(ext ? { target: "_blank", rel: "noopener noreferrer" } : {})}
-                  className="glass group flex items-start gap-5 rounded-2xl p-5 transition hover:border-gold/50"
+                  className="group flex items-start gap-5 rounded-2xl border border-bronze/20 bg-white/80 p-5 shadow-sm transition hover:border-bronze/50 hover:bg-white"
                 >
-                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-gold/10 text-gold transition group-hover:bg-gold group-hover:text-night">
+                  <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-bronze/10 text-bronze-deep transition group-hover:bg-bronze-deep group-hover:text-cream">
                     <Icon className="h-5 w-5" />
                   </span>
                   <span>
-                    <span className="block text-xs uppercase tracking-[0.25em] text-gold">{title}</span>
-                    <span className="mt-1 block text-ivory/90">{value}</span>
+                    <span className="block text-xs font-semibold uppercase tracking-[0.25em] text-bronze">{title}</span>
+                    <span className="mt-1 block font-medium text-cocoa">{value}</span>
                   </span>
                 </a>
               </Reveal>
             ))}
-            <Reveal delay={0.3} className="glass flex items-start gap-5 rounded-2xl p-5">
-              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-gold/10 text-gold">
+            <Reveal delay={0.3} className="flex items-start gap-5 rounded-2xl border border-bronze/20 bg-white/80 p-5 shadow-sm">
+              <span className="grid h-12 w-12 shrink-0 place-items-center rounded-full bg-bronze/10 text-bronze-deep">
                 <Clock className="h-5 w-5" />
               </span>
               <span>
-                <span className="block text-xs uppercase tracking-[0.25em] text-gold">Consultations</span>
-                <span className="mt-1 block text-ivory/90">By appointment: in person, phone or video call</span>
+                <span className="block text-xs font-semibold uppercase tracking-[0.25em] text-bronze">Consultations</span>
+                <span className="mt-1 block text-cocoa/80">By appointment: in person, phone or video call</span>
               </span>
             </Reveal>
             <Reveal delay={0.35} className="flex gap-3 pt-2">
@@ -71,7 +71,7 @@ export default function ContactPage() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="grid h-11 w-11 place-items-center rounded-full border border-gold/25 text-gold transition hover:bg-gold hover:text-night"
+                  className="grid h-11 w-11 place-items-center rounded-full border border-bronze/30 text-bronze-deep transition hover:bg-bronze-deep hover:text-cream"
                 >
                   <Icon className="h-5 w-5" />
                 </a>
@@ -85,11 +85,11 @@ export default function ContactPage() {
         </div>
 
         <Reveal className="mx-auto mt-12 max-w-7xl px-5 sm:px-6">
-          <div className="overflow-hidden rounded-3xl border border-gold/20">
+          <div className="overflow-hidden rounded-3xl border border-bronze/25 shadow-sm">
             <iframe
               title="ASG Consultants location map"
               src={`https://www.google.com/maps?q=${encodeURIComponent(site.address)}&output=embed`}
-              className="h-[380px] w-full grayscale invert-[0.9] hue-rotate-180"
+              className="h-[380px] w-full"
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
             />
@@ -97,7 +97,7 @@ export default function ContactPage() {
         </Reveal>
       </section>
 
-      <Faq />
-    </>
+      <FaqSection />
+    </div>
   );
 }

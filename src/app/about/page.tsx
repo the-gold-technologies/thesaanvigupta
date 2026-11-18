@@ -4,9 +4,9 @@ import { BookOpen, GraduationCap, Mic, Newspaper, Sparkles, Users } from "lucide
 import PageHero from "@/components/PageHero";
 import Reveal from "@/components/Reveal";
 import Counter from "@/components/Counter";
-import Achievements from "@/components/home/Achievements";
-import Reviews from "@/components/home/Reviews";
-import CtaBand from "@/components/CtaBand";
+import Honours from "@/components/landing/Honours";
+import Testimonials from "@/components/landing/Testimonials";
+import FinalCta from "@/components/landing/FinalCta";
 import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -26,7 +26,7 @@ const JOURNEY = [
 
 export default function AboutPage() {
   return (
-    <>
+    <div className="bg-cream text-cocoa">
       <PageHero
         eyebrow="About"
         title="The guide who turns"
@@ -38,17 +38,17 @@ export default function AboutPage() {
       <section className="relative py-16">
         <div className="mx-auto grid max-w-7xl items-start gap-16 px-5 sm:px-6 lg:grid-cols-[0.9fr_1.1fr]">
           <Reveal className="relative lg:sticky lg:top-28">
-            <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] rounded-t-[14rem] ring-1 ring-gold/40 shadow-[0_40px_80px_-30px_rgba(91,50,170,0.8)]">
+            <div className="relative aspect-[4/5] overflow-hidden rounded-[2.5rem] rounded-t-[14rem] ring-1 ring-bronze/30 shadow-[0_30px_70px_-30px_rgba(62,54,46,0.45)]">
               <Image src="/images/saanvi.webp" alt="Aacharya Saanvi Gupta" fill sizes="(max-width: 1024px) 90vw, 520px" className="object-cover" priority />
-              <div className="absolute inset-0 bg-gradient-to-t from-night/80 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-mocha/50 via-transparent to-transparent" />
             </div>
-            <div className="glass absolute -bottom-6 left-6 right-6 grid grid-cols-2 gap-2 rounded-2xl p-4 text-center sm:grid-cols-4">
+            <div className="absolute -bottom-6 left-6 right-6 grid grid-cols-2 gap-2 rounded-2xl border border-bronze/20 bg-white/95 p-4 text-center shadow-lg backdrop-blur sm:grid-cols-4">
               {site.stats.map((s) => (
                 <div key={s.label}>
-                  <div className="font-display text-xl text-gold">
+                  <div className="font-display text-xl text-bronze-deep">
                     <Counter value={s.value} decimals={s.decimals} suffix={s.suffix} />
                   </div>
-                  <div className="text-[10px] uppercase tracking-wider text-muted">{s.label}</div>
+                  <div className="text-[10px] uppercase tracking-wider text-cocoa/60">{s.label}</div>
                 </div>
               ))}
             </div>
@@ -56,31 +56,31 @@ export default function AboutPage() {
 
           <div className="pt-6 lg:pt-0">
             <Reveal>
-              <h2 className="font-display text-3xl sm:text-4xl">
-                Her <span className="text-gold-gradient">philosophy</span>
+              <h2 className="font-display text-3xl uppercase tracking-[0.05em] text-midnight sm:text-4xl">
+                Her <span className="font-script normal-case text-bronze text-[1.2em]">philosophy</span>
               </h2>
-              <p className="mt-6 text-lg leading-relaxed text-ivory/90">
+              <p className="mt-6 text-lg leading-relaxed text-cocoa/90">
                 Too often, astrology is used to frighten people. Saanvi believes the opposite: the stars exist to
-                <span className="text-gold"> guide</span>, and every chart holds a way forward.
+                <span className="font-semibold text-bronze-deep"> guide</span>, and every chart holds a way forward.
               </p>
-              <p className="mt-4 leading-relaxed text-muted">
+              <p className="mt-4 leading-relaxed text-cocoa/75">
                 Her readings combine the depth of Vedic tradition with the logic of her actuarial training. You won&apos;t hear
                 vague predictions or be pushed into expensive rituals. Instead, you get a clear diagnosis, honest timing and
                 simple remedies that fit into everyday life. Her Vastu work follows the same principle: corrections without demolition.
               </p>
             </Reveal>
 
-            <h3 className="mt-16 font-display text-2xl text-ivory">The journey</h3>
-            <ol className="relative mt-8 space-y-6 border-l border-gold/25 pl-8">
+            <h3 className="mt-16 font-display text-2xl uppercase tracking-[0.05em] text-midnight">The journey</h3>
+            <ol className="relative mt-8 space-y-6 border-l border-bronze/25 pl-8">
               {JOURNEY.map(({ Icon, title, text }, i) => (
                 <Reveal key={title} delay={i * 0.06}>
                   <li className="relative">
-                    <span className="absolute -left-[49px] grid h-9 w-9 place-items-center rounded-full border border-gold/50 bg-night text-gold shadow-[0_0_20px_-6px_rgba(233,194,122,0.8)]">
+                    <span className="absolute -left-[49px] grid h-9 w-9 place-items-center rounded-full border border-bronze/40 bg-cream text-bronze-deep shadow-sm">
                       <Icon className="h-4 w-4" />
                     </span>
-                    <div className="glass rounded-2xl p-5">
-                      <h4 className="font-display text-lg text-ivory">{title}</h4>
-                      <p className="mt-2 text-sm leading-relaxed text-muted">{text}</p>
+                    <div className="rounded-2xl border border-bronze/20 bg-white/80 p-5 shadow-sm">
+                      <h4 className="font-display text-lg text-midnight">{title}</h4>
+                      <p className="mt-2 text-sm leading-relaxed text-cocoa/75">{text}</p>
                     </div>
                   </li>
                 </Reveal>
@@ -90,9 +90,9 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <Achievements />
-      <Reviews />
-      <CtaBand title="Ready to talk to Saanvi?" highlight="Your answers are waiting." />
-    </>
+      <Honours />
+      <Testimonials />
+      <FinalCta />
+    </div>
   );
 }

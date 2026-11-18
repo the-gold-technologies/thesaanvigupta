@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import PageHero from "@/components/PageHero";
-import ServicesGrid from "@/components/home/ServicesGrid";
-import ProblemSolver from "@/components/home/ProblemSolver";
-import Process from "@/components/home/Process";
-import CtaBand from "@/components/CtaBand";
+import Services from "@/components/landing/Services";
+import Problems from "@/components/landing/Problems";
+import Journey from "@/components/landing/Journey";
+import FinalCta from "@/components/landing/FinalCta";
 
 export const metadata: Metadata = {
   title: "Services: Astrology, Vastu, Numerology, Prashna & Tarot",
@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 
 export default function ServicesPage() {
   return (
-    <>
+    <div className="bg-cream text-cocoa">
       <PageHero
         eyebrow="Services"
         title="Ancient wisdom,"
@@ -21,10 +21,10 @@ export default function ServicesPage() {
         sub="Five sacred sciences, one goal: practical answers for your life, home and business. Available in person in Noida and online worldwide."
         crumbs={[{ label: "Services" }]}
       />
-      <ServicesGrid showHeading={false} />
-      <ProblemSolver />
-      <Process />
-      <CtaBand />
-    </>
+      <Services showHeading={false} />
+      <Problems />
+      <Journey />
+      <FinalCta />
+    </div>
   );
 }
