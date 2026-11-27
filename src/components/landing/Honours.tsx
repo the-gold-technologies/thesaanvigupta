@@ -78,7 +78,7 @@ export default function Honours() {
         </Reveal>
 
         {/* Medallions */}
-        <div className="mt-14 grid grid-cols-2 gap-x-6 gap-y-12 lg:grid-cols-4">
+        <div className="mt-14 grid grid-cols-2 gap-x-6 gap-y-12 lg:grid-cols-3">
           {rest.map((a, i) => (
             <Reveal key={a.title} delay={i * 0.08}>
               <AwardPhoto

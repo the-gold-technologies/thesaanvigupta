@@ -48,11 +48,11 @@ export function serviceHref(s: { slug: string; href?: string }) {
 }
 
 export const nav = [
-  { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Vastu Coaching", href: "/vastu-coaching" },
-  { label: "Reviews", href: "/#reviews" },
+  { label: "Media", href: "/media" },
+  { label: "Achievements", href: "/achievements" },
   { label: "Contact", href: "/contact" },
 ];
 
@@ -399,28 +399,53 @@ export const achievements: {
   year: string;
   title: string;
   by: string;
+  /** Event or venue, when known (read from the photo banner). */
+  event?: string;
   image?: string;
 }[] = [
   {
     year: "2021",
     title: "Vastu Excellence Award",
-    by: "Presented by the Chief Minister of Uttar Pradesh",
+    by: "Presented by Shri Yogi Adityanath, Chief Minister of Uttar Pradesh",
+    image: "/images/awards/up-cm-vastu-2021.webp",
   },
   {
     year: "",
     title: "Excellence in Vastu",
     by: "Awarded by Professor B. B. Puri",
+    image: "/images/awards/bb-puri-excellence-in-vastu.webp",
   },
-  { year: "", title: '"Aacharya" Title', by: "Conferred at Mahagurukul" },
+  {
+    year: "",
+    title: "Excellence in Astrology",
+    by: "Awarded by Shri H. S. Rawat",
+    event: "5th International Conference on Indian Vedic Culture & Astrology",
+    image: "/images/awards/excellence-in-astrology.webp",
+  },
+  {
+    year: "",
+    title: '"Aacharya" Title',
+    by: "Conferred at Mahagurukul",
+    image: "/images/awards/mahagurukul-aacharya.webp",
+  },
   {
     year: "",
     title: "Award of Honour",
     by: "Presented by Shri G. D. Vashist & Shri H. S. Rawat",
+    image: "/images/awards/vashist-rawat-honour.webp",
+  },
+  {
+    year: "",
+    title: "Mega Astrology Seminar Honour",
+    by: "Presented by Shri G. D. Vashist & Shri H. S. Rawat",
+    event: "Mega Astrology Seminar",
+    image: "/images/awards/astrology-seminar-honour.webp",
   },
   {
     year: "",
     title: "Community Recognition",
     by: "Green Avenue Residents Welfare Association",
+    image: "/images/awards/green-avenue-rwa.webp",
   },
 ];
 

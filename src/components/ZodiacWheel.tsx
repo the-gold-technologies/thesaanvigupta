@@ -40,11 +40,34 @@ const PLANETS = [
   { r: 178, deg: 320, size: 5.5, color: "#4f65db", glow: "#95a3ff" }, // Saturn (Shani - sapphire blue)
 ];
 
+/** Line / text colours: bronze for light backgrounds, warm latte for dark ones. */
+const PALETTES = {
+  light: {
+    line: "#8a6a54",
+    glyph: "#5c412d",
+    name: "#7a5840",
+    accent: "#b48a4a",
+    ring: ["#b48a4a", "#8a6a54", "#6c4d37"],
+  },
+  dark: {
+    line: "#d9bf9a",
+    glyph: "#f1e0c6",
+    name: "#e3c9a6",
+    accent: "#e9c27a",
+    ring: ["#f3d999", "#e3c9a6", "#c9a77f"],
+  },
+};
+
 export default function ZodiacWheel({
   className = "",
+  tone = "light",
 }: {
   className?: string;
+  /** Use "dark" when the wheel sits on a dark background. */
+  tone?: "light" | "dark";
 }) {
+  const pal = PALETTES[tone];
+  const ring = `zw-bronze-${tone}`;
   return (
     <svg viewBox="0 0 600 600" className={className} aria-hidden>
       <defs>
@@ -53,10 +76,10 @@ export default function ZodiacWheel({
           <stop offset="65%" stopColor="#ebdcc7" stopOpacity="0.15" />
           <stop offset="100%" stopColor="#fbf7ef" stopOpacity="0" />
         </radialGradient>
-        <linearGradient id="zw-bronze" x1="0" y1="0" x2="1" y2="1">
-          <stop offset="0%" stopColor="#b48a4a" />
-          <stop offset="50%" stopColor="#8a6a54" />
-          <stop offset="100%" stopColor="#6c4d37" />
+        <linearGradient id={ring} x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0%" stopColor={pal.ring[0]} />
+          <stop offset="50%" stopColor={pal.ring[1]} />
+          <stop offset="100%" stopColor={pal.ring[2]} />
         </linearGradient>
         <filter id="zw-glow" x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur stdDeviation="3.5" result="blur" />
@@ -77,7 +100,7 @@ export default function ZodiacWheel({
           cy={C}
           r={292}
           fill="none"
-          stroke="url(#zw-bronze)"
+          stroke={`url(#${ring})`}
           strokeOpacity="0.75"
           strokeWidth="0.9"
         />
@@ -86,7 +109,7 @@ export default function ZodiacWheel({
           cy={C}
           r={250}
           fill="none"
-          stroke="url(#zw-bronze)"
+          stroke={`url(#${ring})`}
           strokeOpacity="0.7"
           strokeWidth="0.9"
         />
@@ -95,7 +118,7 @@ export default function ZodiacWheel({
           cy={C}
           r={226}
           fill="none"
-          stroke="#8a6a54"
+          stroke={pal.line}
           strokeOpacity="0.45"
           strokeWidth="0.8"
         />
@@ -109,7 +132,7 @@ export default function ZodiacWheel({
               y1={a.y}
               x2={b.x}
               y2={b.y}
-              stroke="#8a6a54"
+              stroke={pal.line}
               strokeOpacity={i % 6 === 0 ? 0.8 : 0.55}
               strokeWidth={i % 6 === 0 ? "1" : "0.7"}
             />
@@ -127,7 +150,7 @@ export default function ZodiacWheel({
                 y1={d1.y}
                 x2={d2.x}
                 y2={d2.y}
-                stroke="#8a6a54"
+                stroke={pal.line}
                 strokeOpacity="0.65"
                 strokeWidth="0.8"
               />
@@ -137,7 +160,7 @@ export default function ZodiacWheel({
                 textAnchor="middle"
                 dominantBaseline="central"
                 fontSize="20"
-                fill="#5c412d"
+                fill={pal.glyph}
                 className="glyph font-normal"
                 transform={`rotate(${i * 30 + 15} ${g.x} ${g.y})`}
               >
@@ -151,7 +174,7 @@ export default function ZodiacWheel({
                 fontSize="8"
                 fontWeight="600"
                 letterSpacing="2"
-                fill="#7a5840"
+                fill={pal.name}
                 transform={`rotate(${i * 30 + 15} ${n.x} ${n.y})`}
               >
                 {s.n}
@@ -168,7 +191,7 @@ export default function ZodiacWheel({
           cy={C}
           r={206}
           fill="none"
-          stroke="#8a6a54"
+          stroke={pal.line}
           strokeOpacity="0.5"
           strokeDasharray="2 6"
           strokeWidth="0.9"
@@ -181,7 +204,7 @@ export default function ZodiacWheel({
               cx={a.x}
               cy={a.y}
               r={1.9}
-              fill="#b48a4a"
+              fill={pal.accent}
               opacity="0.85"
             />
           );
@@ -195,7 +218,7 @@ export default function ZodiacWheel({
             })
             .join(" ")}
           fill="none"
-          stroke="#b48a4a"
+          stroke={pal.accent}
           strokeOpacity="0.4"
           strokeWidth="0.8"
         />
@@ -210,7 +233,7 @@ export default function ZodiacWheel({
             cy={C}
             r={r}
             fill="none"
-            stroke="#8a6a54"
+            stroke={pal.line}
             strokeOpacity="0.4"
             strokeWidth="0.8"
           />
@@ -254,7 +277,7 @@ export default function ZodiacWheel({
               y1={a.y}
               x2={b.x}
               y2={b.y}
-              stroke="#8a6a54"
+              stroke={pal.line}
               strokeWidth="0.8"
             />
           );

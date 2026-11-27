@@ -93,6 +93,7 @@ export default function Footer() {
               { l: "All Services", h: "/services" },
               { l: "Vastu Coaching", h: "/vastu-coaching" },
               { l: "Media & Videos", h: "/media" },
+              { l: "Achievements", h: "/achievements" },
               { l: "Free Numerology Calculator", h: "/#numerology" },
               { l: "Client Reviews", h: "/#reviews" },
               { l: "FAQs", h: "/#faq" },

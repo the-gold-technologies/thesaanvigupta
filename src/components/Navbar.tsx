@@ -9,12 +9,11 @@ import { ChevronDown, Menu, X } from "lucide-react";
 import { serviceHref, services, waLink } from "@/lib/site";
 
 const links = [
-  { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services", dropdown: true },
   { label: "Vastu Coaching", href: "/vastu-coaching" },
   { label: "Media", href: "/media" },
-  { label: "Reviews", href: "/#reviews" },
+  { label: "Achievements", href: "/achievements" },
   { label: "Contact", href: "/contact" },
 ];
 

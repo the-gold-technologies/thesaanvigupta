@@ -9,6 +9,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     "/contact",
     "/vastu-coaching",
     "/media",
+    "/achievements",
     ...services.map(serviceHref),
   ];
   return routes.map((r) => ({
