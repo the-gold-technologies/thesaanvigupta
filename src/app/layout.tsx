@@ -5,6 +5,7 @@ import StarField from "@/components/StarField";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import StickyContact from "@/components/StickyContact";
+import CookieConsent from "@/components/CookieConsent";
 import { site } from "@/lib/site";
 
 const cinzel = Cinzel({
@@ -98,6 +99,7 @@ export default function RootLayout({
         <main>{children}</main>
         <Footer />
         <StickyContact />
+        <CookieConsent />
         <div className="h-14 md:hidden" aria-hidden />
       </body>
     </html>
