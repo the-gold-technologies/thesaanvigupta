@@ -86,7 +86,7 @@ export default async function BlogArticlePage({ params }: Props) {
       />
 
       {/* ── Header: featured image as background with balanced height matching reference ── */}
-      <header className="parchment-sky deep relative flex min-h-[440px] items-end overflow-hidden text-cream sm:min-h-[480px] lg:min-h-[520px]">
+      <header className="parchment-sky deep relative flex min-h-[590px] items-end overflow-hidden text-cream sm:min-h-[630px] lg:min-h-[670px]">
         {post.image && (
           <>
             <Image
@@ -98,22 +98,28 @@ export default async function BlogArticlePage({ params }: Props) {
               className="object-cover"
             />
             {/* overlays keep the text readable on any image */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#16120e] via-[#16120e]/80 via-50% to-[#16120e]/30" />
-            <div className="absolute inset-0 bg-gradient-to-r from-[#16120e]/90 via-[#16120e]/50 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#16120e]/90 via-[#16120e]/35 via-45% to-[#16120e]/5" />
+            <div className="absolute inset-0 bg-gradient-to-r from-[#16120e]/60 via-[#16120e]/20 to-transparent" />
           </>
         )}
 
-        <div className="relative mx-auto w-full max-w-7xl px-5 pb-10 pt-28 sm:px-6 sm:pb-12 sm:pt-32 lg:pb-14 lg:pt-36">
+        <div className="relative mx-auto w-full max-w-7xl px-5 pb-12 pt-32 sm:px-6 sm:pb-14 sm:pt-36 lg:pb-16 lg:pt-40">
           <Reveal className="max-w-3xl">
             <nav
               aria-label="Breadcrumb"
               className="flex flex-wrap items-center gap-1.5 text-xs text-cream/70"
             >
-              <Link href="/" className="transition hover:text-latte">
-                Home
+              <Link
+                href="/achievements"
+                className="transition hover:text-latte"
+              >
+                Achievements
               </Link>
               <ChevronRight className="h-3 w-3 text-latte/60" />
-              <Link href="/blog" className="transition hover:text-latte">
+              <Link
+                href="/achievements#blog"
+                className="transition hover:text-latte"
+              >
                 Blog
               </Link>
               <ChevronRight className="h-3 w-3 text-latte/60" />
@@ -128,15 +134,15 @@ export default async function BlogArticlePage({ params }: Props) {
               </span>
             )}
 
-            <h1 className="mt-3.5 font-display text-2xl font-normal leading-[1.2] tracking-tight text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.6)] sm:text-3xl lg:text-[2.6rem]">
+            <h1 className="mt-4 font-display text-[1.7rem] font-normal leading-[1.2] tracking-tight text-white drop-shadow-[0_2px_16px_rgba(0,0,0,0.7)] sm:text-4xl lg:text-[2.9rem]">
               {post.title}
             </h1>
 
-            <p className="mt-3 max-w-2xl text-sm font-light leading-relaxed text-cream/85 line-clamp-2 sm:text-base">
+            <p className="mt-4 max-w-2xl text-sm font-light leading-relaxed text-cream/90 drop-shadow-[0_1px_8px_rgba(0,0,0,0.6)] line-clamp-3 sm:text-lg">
               {post.excerpt}
             </p>
 
-            <div className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-white/15 pt-4 text-xs text-cream/85 sm:text-sm">
+            <div className="mt-7 flex flex-wrap items-center gap-x-6 gap-y-2 border-t border-white/20 pt-5 text-xs text-cream/85 sm:text-sm">
               <span className="flex items-center gap-2.5">
                 <span className="relative h-8 w-8 overflow-hidden rounded-full border border-latte/60 shadow sm:h-9 sm:w-9">
                   <Image

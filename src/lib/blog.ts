@@ -200,11 +200,12 @@ function addHeadingIds(html: string) {
   const used = new Set<string>();
   const out = html.replace(/<h2>([\s\S]*?)<\/h2>/gi, (_, inner) => {
     const text = toText(inner);
-    let id = text
-      .toLowerCase()
-      .replace(/[^a-z0-9]+/g, "-")
-      .replace(/^-|-$/g, "")
-      .slice(0, 60) || "section";
+    let id =
+      text
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-")
+        .replace(/^-|-$/g, "")
+        .slice(0, 60) || "section";
     while (used.has(id)) id += "-2";
     used.add(id);
     toc.push({ id, text });
