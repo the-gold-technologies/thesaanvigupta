@@ -1,14 +1,10 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import {
-  BookOpen,
   Briefcase,
-  Building2,
-  Compass,
   GraduationCap,
   Home,
   Landmark,
-  LayoutGrid,
   MonitorPlay,
   Palette,
   Phone,
@@ -18,10 +14,12 @@ import {
   Users,
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import LearningPath from "@/components/LearningPath";
 import { WhatsAppIcon } from "@/components/Icons";
-import { Heading, Sparkle } from "@/components/landing/Ornament";
+import { Heading } from "@/components/landing/Ornament";
 import BronzeWheel from "@/components/landing/BronzeWheel";
 import Testimonials from "@/components/landing/Testimonials";
+import Instagram from "@/components/landing/Instagram";
 import { achievements, site, waLink } from "@/lib/site";
 
 export const metadata: Metadata = {
@@ -65,39 +63,6 @@ const audience = [
     icon: Sparkles,
     title: "Astrology practitioners",
     text: "Add Vastu to your guidance.",
-  },
-];
-
-const modules = [
-  {
-    icon: Compass,
-    title: "Foundations of Vastu",
-    text: "Directions, the Vastu Purusha Mandala and how energy moves through a space.",
-  },
-  {
-    icon: LayoutGrid,
-    title: "16 Zones & 5 Elements",
-    text: "What each zone governs, its element, colours and the activities that belong there.",
-  },
-  {
-    icon: BookOpen,
-    title: "Reading Floor Plans",
-    text: "Find the centre, map the zones and spot imbalances on any layout.",
-  },
-  {
-    icon: Sparkles,
-    title: "Remedies Without Demolition",
-    text: "Colour, metal, placement and element-based corrections that work with existing structures.",
-  },
-  {
-    icon: Home,
-    title: "Residential Vastu",
-    text: "Entrances, kitchens, bedrooms, toilets and lockers — homes, flats and villas.",
-  },
-  {
-    icon: Building2,
-    title: "Commercial & Industrial Vastu",
-    text: "Offices, shops, showrooms, factories and plot selection.",
   },
 ];
 
@@ -232,51 +197,8 @@ export default function VastuCoachingPage() {
         </div>
       </section>
 
-      {/* ── Curriculum timeline ── */}
-      <section className="bg-parchment py-24">
-        <div className="mx-auto max-w-5xl px-5 sm:px-6">
-          <Heading
-            eyebrow="Curriculum"
-            title="Your learning"
-            script="journey"
-            sub="Six modules, from first principles to confident, practical Vastu analysis."
-          />
-          <ol className="relative mt-16">
-            <span className="absolute bottom-0 left-6 top-0 w-px bg-gradient-to-b from-transparent via-bronze/40 to-transparent md:left-1/2" />
-            {modules.map((m, i) => {
-              const right = i % 2 === 1;
-              return (
-                <li
-                  key={m.title}
-                  className="relative grid gap-6 pb-10 last:pb-0 md:grid-cols-2 md:gap-16"
-                >
-                  <span className="absolute left-6 top-4 z-10 grid h-12 w-12 -translate-x-1/2 place-items-center rounded-full border-4 border-parchment bg-bronze-deep font-display text-sm text-cream md:left-1/2">
-                    {String(i + 1).padStart(2, "0")}
-                  </span>
-                  <Reveal
-                    delay={0.05}
-                    className={`ml-16 md:ml-0 ${right ? "md:col-start-2" : "md:text-right"}`}
-                  >
-                    <div className="rounded-2xl border border-bronze/20 bg-cream p-6 shadow-[0_24px_50px_-35px_rgba(43,31,24,0.5)]">
-                      <div
-                        className={`flex items-center gap-2 text-[11px] font-semibold uppercase tracking-[0.3em] text-bronze ${right ? "" : "md:justify-end"}`}
-                      >
-                        <m.icon className="h-4 w-4" /> Module {i + 1}
-                      </div>
-                      <h3 className="mt-2 font-display text-xl text-midnight">
-                        {m.title}
-                      </h3>
-                      <p className="mt-2 text-sm leading-relaxed text-cocoa/70">
-                        {m.text}
-                      </p>
-                    </div>
-                  </Reveal>
-                </li>
-              );
-            })}
-          </ol>
-        </div>
-      </section>
+      {/* ── Learning journey ── */}
+      <LearningPath enquireHref={enquire} />
 
       {/* ── Method ── */}
       <section className="parchment-sky deep py-24 text-cream">
@@ -418,58 +340,7 @@ export default function VastuCoachingPage() {
 
       <Testimonials />
 
-      {/* ── Enquiry ── */}
-      <section className="paper px-5 pb-24 sm:px-6">
-        <Reveal className="mx-auto grid max-w-5xl overflow-hidden rounded-[2rem] border border-umber/40 shadow-[0_40px_90px_-50px_rgba(62,54,46,0.8)] md:grid-cols-[1.2fr_0.8fr]">
-          <div className="parchment-sky p-8 text-cream sm:p-12">
-            <h2 className="font-display text-3xl uppercase leading-tight sm:text-4xl">
-              Start your
-              <span className="block font-script text-[1.4em] normal-case leading-[0.9] text-latte">
-                Vastu journey
-              </span>
-            </h2>
-            <p className="mt-5 max-w-md text-cream/80">
-              Message us and we&apos;ll share the next batch dates, format and
-              fees.
-            </p>
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <a
-                href={enquire}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-latte px-7 py-3.5 font-semibold text-mocha transition hover:bg-cream"
-              >
-                <WhatsAppIcon className="h-5 w-5" /> WhatsApp us
-              </a>
-              <a
-                href={`tel:${site.phonePrimaryRaw}`}
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-latte/40 px-7 py-3.5 font-medium text-cream transition hover:bg-white/10"
-              >
-                <Phone className="h-4 w-4 text-latte" /> Call now
-              </a>
-            </div>
-          </div>
-          <div className="bg-cream p-8 sm:p-10">
-            <div className="text-[11px] font-semibold uppercase tracking-[0.3em] text-bronze">
-              Tell us
-            </div>
-            <ul className="mt-5 space-y-4">
-              {[
-                "Your current knowledge level",
-                "Your goal — personal or professional",
-                "Preferred mode — online or in person",
-              ].map((t) => (
-                <li
-                  key={t}
-                  className="flex items-start gap-3 text-sm text-cocoa"
-                >
-                  <Sparkle className="mt-1 h-3 w-3 shrink-0 text-antique" /> {t}
-                </li>
-              ))}
-            </ul>
-          </div>
-        </Reveal>
-      </section>
+      <Instagram />
     </div>
   );
 }

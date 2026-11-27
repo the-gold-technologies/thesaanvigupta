@@ -646,33 +646,56 @@ export const instagramPosts: string[] = [];
 export const projects: {
   title: string;
   type: string;
+  icon: "home" | "office" | "shop" | "factory" | "plot";
   text: string;
+  focus: string[];
   location?: string;
   image?: string;
 }[] = [
   {
     title: "Homes & Apartments",
     type: "Residential Vastu",
+    icon: "home",
     text: "Flats, villas and independent houses balanced zone by zone — without breaking a single wall.",
+    focus: [
+      "Main entrance",
+      "Kitchen placement",
+      "Master bedroom",
+      "Puja room",
+      "Toilets",
+    ],
   },
   {
     title: "Offices & Corporate Spaces",
     type: "Commercial Vastu",
+    icon: "office",
     text: "Seating, entrances and cash zones aligned for better decisions, teamwork and growth.",
+    focus: [
+      "Owner's cabin",
+      "Seating direction",
+      "Reception",
+      "Accounts & cash",
+    ],
   },
   {
     title: "Shops & Showrooms",
     type: "Retail Vastu",
+    icon: "shop",
     text: "Entrance, display and counter placement planned to support footfall and sales.",
+    focus: ["Shop entrance", "Cash counter", "Display zones", "Storage"],
   },
   {
     title: "Factories & Industrial Units",
     type: "Industrial Vastu",
+    icon: "factory",
     text: "Machinery, storage and dispatch zones mapped for smooth production and cash flow.",
+    focus: ["Heavy machinery", "Raw material", "Finished goods", "Dispatch"],
   },
   {
     title: "Plots & New Property",
     type: "Pre-purchase Vastu",
+    icon: "plot",
     text: "Plot shape, road position and directions checked before you buy or build.",
+    focus: ["Plot shape", "Road facing", "Slope", "Surroundings"],
   },
 ];
