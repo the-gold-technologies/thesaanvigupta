@@ -11,13 +11,37 @@ import { site, type Video } from "@/lib/site";
  * iframe after a tap. Without an ID it shows a branded poster that
  * links to the channel.
  */
+const TINTS = [
+  {
+    h: "bg-[linear-gradient(90deg,#2b1f18_0%,#2b1f18_38%,rgba(43,31,24,0.35)_70%,rgba(43,31,24,0.1))]",
+    v: "bg-[linear-gradient(180deg,rgba(43,31,24,0.15)_30%,#2b1f18_95%)]",
+  },
+  {
+    h: "bg-[linear-gradient(90deg,#5a2e17_0%,#5a2e17_38%,rgba(90,46,23,0.35)_70%,rgba(90,46,23,0.1))]",
+    v: "bg-[linear-gradient(180deg,rgba(90,46,23,0.15)_30%,#4a2513_95%)]",
+  },
+  {
+    h: "bg-[linear-gradient(90deg,#3e362e_0%,#3e362e_38%,rgba(62,54,46,0.35)_70%,rgba(62,54,46,0.1))]",
+    v: "bg-[linear-gradient(180deg,rgba(62,54,46,0.15)_30%,#3e362e_95%)]",
+  },
+];
+
+function hash(s: string) {
+  let h = 0;
+  for (let i = 0; i < s.length; i++) h = (h * 31 + s.charCodeAt(i)) >>> 0;
+  return h;
+}
+
 export function VideoCard({
   video,
   vertical = false,
+  badge,
   className = "",
 }: {
   video: Video;
   vertical?: boolean;
+  /** Label for the poster's top-left tag (e.g. a channel name) */
+  badge?: string;
   className?: string;
 }) {
   const [playing, setPlaying] = useState(false);
@@ -35,6 +59,10 @@ export function VideoCard({
   );
 
   if (!video.id) {
+    // Branded poster until a real YouTube ID is added in site.ts
+    const tint = TINTS[hash(video.title) % TINTS.length];
+    const label =
+      badge ?? video.highlight ?? (vertical ? "Short" : "Watch on YouTube");
     return (
       <a
         href={site.socials.youtube}
@@ -43,15 +71,48 @@ export function VideoCard({
         aria-label={`${video.title} — watch on YouTube`}
         className={`group ${frame} ${className}`}
       >
-        <span className="parchment-sky absolute inset-0" />
-        <span className="absolute inset-0 bg-[radial-gradient(60%_50%_at_50%_40%,rgba(134,93,54,0.6),transparent)]" />
         <span
-          className={`absolute inset-x-0 bottom-0 p-4 text-left font-display leading-snug text-cream ${vertical ? "text-sm" : "text-base sm:text-lg"}`}
+          className={`absolute inset-y-0 right-0 ${vertical ? "left-0" : "left-[30%]"}`}
+        >
+          <Image
+            src="/images/saanvi.webp"
+            alt=""
+            fill
+            sizes={vertical ? "240px" : "(min-width: 1024px) 480px, 70vw"}
+            className={`object-cover transition duration-700 group-hover:scale-105 ${
+              vertical ? "object-[50%_15%]" : "object-[50%_20%]"
+            }`}
+          />
+        </span>
+        <span className={`absolute inset-0 ${vertical ? tint.v : tint.h}`} />
+
+        {/* top row */}
+        <span className="absolute inset-x-3 top-3 flex items-center justify-between sm:inset-x-4 sm:top-4">
+          <span className="inline-flex items-center gap-1.5 rounded-md bg-black/35 px-2 py-1 text-[9px] font-bold uppercase tracking-[0.2em] text-latte backdrop-blur-sm sm:text-[10px]">
+            {badge && <span className="h-1.5 w-1.5 rounded-full bg-mars" />}
+            {label}
+          </span>
+          <YouTubeIcon className="h-5 w-5 text-white/85" />
+        </span>
+
+        {/* title */}
+        <span
+          className={`absolute bottom-0 left-0 p-4 text-left font-display uppercase leading-[1.15] text-cream sm:p-5 ${
+            vertical
+              ? "right-0 text-[13px]"
+              : "right-[38%] text-base sm:text-xl"
+          }`}
         >
           {video.title}
+          <span className="mt-3 flex items-center gap-2 font-sans text-[10px] font-semibold normal-case tracking-[0.15em] text-latte sm:text-[11px]">
+            <span
+              className={`grid place-items-center rounded-full bg-[#c2622a] text-white shadow-lg transition group-hover:scale-110 group-hover:bg-mars ${vertical ? "h-7 w-7" : "h-9 w-9"}`}
+            >
+              <Play className="ml-0.5 h-3.5 w-3.5 fill-current" />
+            </span>
+            {vertical ? "Watch" : "Watch now"}
+          </span>
         </span>
-        <YouTubeIcon className="absolute right-3 top-3 h-5 w-5 text-latte/80" />
-        {playBadge}
       </a>
     );
   }

@@ -27,9 +27,9 @@ export default function FinalCta() {
             <MapPin className="h-3.5 w-3.5" /> Sector 121, Noida
           </p>
           <h2 className="mx-auto mt-4 max-w-3xl font-display text-3xl uppercase leading-tight text-cream sm:text-5xl">
-            Talk to Noida&apos;s
+            Your problem has a solution.
             <span className="mt-2 block font-script text-5xl normal-case text-latte sm:text-7xl">
-              Best Astrologer
+              Let&apos;s find it today
             </span>
           </h2>
           <Divider tone="warm" className="mt-5 justify-center" />

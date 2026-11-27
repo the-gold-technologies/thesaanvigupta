@@ -21,8 +21,7 @@ export const site = {
     instagram: "https://www.instagram.com/astrosaanvigupta/",
     facebook: "https://www.facebook.com/astrosaanvigupta/",
     linkedin: "https://www.linkedin.com/in/astrosaanvigupta",
-    // TODO: confirm the YouTube channel handle
-    youtube: "https://www.youtube.com/@astrosaanvigupta",
+    youtube: "https://www.youtube.com/@astrologervastuconsultants",
   },
   instagramHandle: "astrosaanvigupta",
   /** Google Place ID (from the "write a review" link) — used for live reviews */
@@ -571,34 +570,58 @@ export const media: { name: string; kind: string; url?: string }[] = [
   { name: "Amar Ujala", kind: "Hindi daily" },
 ];
 
-/** "Saanvi's guidance" — long-form YouTube videos. */
+/** "Saanvi's guidance" — long-form YouTube videos (channel: @astrologervastuconsultants). */
 export const guidanceVideos: Video[] = [
   {
-    id: "",
-    title: "Vastu for a happy home",
+    id: "zIvRc6Iw_Zo",
+    title: "Vastu & its five elements",
     highlight: "Home Vastu",
-    caption: "Simple corrections without demolition",
+    caption: "How the five elements shape the energy of your home",
   },
   {
-    id: "",
-    title: "Marriage delays and remedies",
-    highlight: "Marriage",
-    caption: "What your Kundali says about timing",
+    id: "4lRrGDjKdi8",
+    title: "Secure your wealth with Vastu",
+    highlight: "Wealth",
+    caption: "Simple Vastu steps to protect and grow your money",
   },
   {
-    id: "",
-    title: "Numbers that shape your destiny",
+    id: "c7KXL0qRkX0",
+    title: "Changing your surname — what numerology says",
     highlight: "Numerology",
-    caption: "Your Moolank and Bhagyank explained",
+    caption: "Should you change your name after marriage?",
   },
 ];
 
 /** YouTube Shorts (vertical). */
 export const shorts: Video[] = [
-  { id: "", title: "Lucky direction for your bed" },
-  { id: "", title: "Main door Vastu tip" },
-  { id: "", title: "Locker placement for wealth" },
-  { id: "", title: "Study table direction" },
+  { id: "29mlYife_7M", title: "Never keep these under your bed" },
+  { id: "SVyRQXsnOs0", title: "3 locker mistakes to avoid" },
+  { id: "Bq10ciyM_QE", title: "Study room & bedroom for kids" },
+  { id: "f1tk3N8hsO0", title: "Can your mobile number make you rich?" },
+];
+
+/** Television appearances shown as stills (screenshots from the broadcasts). */
+export const tvFeatures: {
+  image: string;
+  channel: string;
+  title: string;
+  caption: string;
+  alt: string;
+}[] = [
+  {
+    image: "/images/ndtv-rashifal.webp",
+    channel: "NDTV",
+    title: "Chandra-Surya Rashifal ka adbhut sangam",
+    caption: "Saanvi decodes the Moon and Sun horoscope",
+    alt: "Saanvi Gupta, numerologist, on NDTV's Chandra-Surya Rashifal segment",
+  },
+  {
+    image: "/images/ndtv-bhagyoday-2026.webp",
+    channel: "NDTV",
+    title: "Ankshastra se aapki samasyaon ka ant",
+    caption: "Bhagyoday 2026 — numerology predictions by Moolank",
+    alt: "Saanvi Gupta on NDTV's Bhagyoday 2026 numerology predictions",
+  },
 ];
 
 /** Television appearances. */
@@ -620,22 +643,28 @@ export const tvVideos: Video[] = [
 /** Podcast appearances. */
 export const podcasts: (Video & { show: string })[] = [
   {
-    id: "",
-    show: "Podcast",
-    title: "Vastu, energy and the modern home",
-    caption: "A conversation on living in balance",
+    id: "VFKa_UroELY",
+    show: "Divya Sanket",
+    title: "Can Vastu & numerology change your destiny?",
+    caption: "An hour-long conversation on Vastu and numbers",
   },
   {
-    id: "",
-    show: "Podcast",
-    title: "Astrology without fear",
-    caption: "Practical guidance over predictions",
+    id: "odxq3mCv36I",
+    show: "Shruti Outloud",
+    title: "Cosmic exchange — astrology, Vastu & numerology",
+    caption: "How the three sciences work together",
   },
   {
-    id: "",
-    show: "Podcast",
-    title: "The power of numbers",
-    caption: "Numerology in everyday decisions",
+    id: "NTggc0hN7MU",
+    show: "Shruti Outloud",
+    title: "Debunking astrology myths & doubts",
+    caption: "Separating real astrology from fear and superstition",
+  },
+  {
+    id: "C7OJbGKFfbQ",
+    show: "Shruti Outloud",
+    title: "Choosing the world of astrology",
+    caption: "Saanvi on how her journey began",
   },
 ];
 
