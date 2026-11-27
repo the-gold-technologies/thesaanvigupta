@@ -41,7 +41,7 @@ export default async function ServicePage({
         eyebrow={`Ruled by ${s.planet}`}
         title={s.title}
         sub={s.short}
-        crumbs={[{ label: "Services", href: "/services" }, { label: s.title }]}
+        crumbs={[{ label: "Services" }, { label: s.title }]}
       />
 
       <section className="relative py-12">

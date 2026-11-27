@@ -122,15 +122,6 @@ export default function Services({
             );
           })}
         </div>
-
-        <Reveal className="mt-12 text-center">
-          <Link
-            href="/services"
-            className="btn-bronze-line inline-flex items-center gap-2 rounded-full px-7 py-3 text-sm font-semibold"
-          >
-            View all services <ArrowUpRight className="h-4 w-4" />
-          </Link>
-        </Reveal>
       </div>
     </section>
   );

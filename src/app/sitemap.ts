@@ -5,7 +5,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [
     "",
     "/about",
-    "/services",
+    "/privacy-policy",
     "/contact",
     "/vastu-coaching",
     "/media",

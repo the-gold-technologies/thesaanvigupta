@@ -12,9 +12,15 @@ const nextConfig: NextConfig = {
   },
   async redirects() {
     return [
+      { source: "/services", destination: "/#services", permanent: true },
+      {
+        source: "/terms-and-conditions.html",
+        destination: "/privacy-policy",
+        permanent: true,
+      },
       {
         source: "/services/tarot-card-reading",
-        destination: "/services",
+        destination: "/#services",
         permanent: true,
       },
       {

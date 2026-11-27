@@ -10,7 +10,7 @@ import { serviceHref, services, waLink } from "@/lib/site";
 
 const links = [
   { label: "About", href: "/about" },
-  { label: "Services", href: "/services", dropdown: true },
+  { label: "Services", href: "", dropdown: true },
   { label: "Vastu Coaching", href: "/vastu-coaching" },
   { label: "Media", href: "/media" },
   { label: "Achievements", href: "/achievements" },
@@ -75,7 +75,7 @@ export default function Navbar() {
               const active = l.dropdown
                 ? pathname.startsWith("/services")
                 : pathname === l.href;
-              const cls = `relative flex items-center gap-1 px-3.5 py-2 text-sm font-medium transition hover:text-bronze ${
+              const cls = `relative flex cursor-pointer items-center gap-1 px-3.5 py-2 text-sm font-medium transition hover:text-bronze ${
                 active ? "text-bronze" : "text-midnight/80"
               }`;
               const underline = active && (
@@ -83,18 +83,18 @@ export default function Navbar() {
               );
               return l.dropdown ? (
                 <li key={l.label} className="group relative">
-                  <Link href={l.href} className={cls}>
+                  <button type="button" aria-haspopup="true" className={cls}>
                     {l.label}{" "}
-                    <ChevronDown className="h-3.5 w-3.5 transition group-hover:rotate-180" />
+                    <ChevronDown className="h-3.5 w-3.5 transition group-hover:rotate-180 group-focus-within:rotate-180" />
                     {underline}
-                  </Link>
-                  <div className="invisible absolute left-1/2 top-full w-72 -translate-x-1/2 pt-3 opacity-0 transition-all duration-300 group-hover:visible group-hover:opacity-100">
+                  </button>
+                  <div className="invisible absolute left-1/2 top-full w-72 -translate-x-1/2 pt-3 opacity-0 transition-all duration-300 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
                     <div className="rounded-2xl border border-bronze/15 bg-cream p-2 shadow-[0_30px_60px_-25px_rgba(43,31,24,0.45)]">
                       {services.map((s) => (
                         <Link
                           key={s.slug}
                           href={serviceHref(s)}
-                          className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-cocoa transition hover:bg-parchment hover:text-bronze-deep"
+                          className="flex cursor-pointer items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-cocoa transition hover:bg-parchment hover:text-bronze-deep"
                         >
                           <span className="glyph grid h-8 w-8 place-items-center rounded-full border border-bronze/30 text-bronze">
                             {s.glyph}
@@ -121,13 +121,13 @@ export default function Navbar() {
               href={waLink()}
               target="_blank"
               rel="noopener noreferrer"
-              className="btn-midnight hidden rounded-full px-5 py-2.5 text-sm font-semibold sm:inline-flex"
+              className="btn-midnight hidden cursor-pointer rounded-full px-5 py-2.5 text-sm font-semibold sm:inline-flex"
             >
               Book Consultation
             </a>
             <button
               onClick={() => setOpen((v) => !v)}
-              className="grid h-11 w-11 place-items-center rounded-full border border-bronze/30 text-bronze-deep lg:hidden"
+              className="grid h-11 w-11 cursor-pointer place-items-center rounded-full border border-bronze/30 text-bronze-deep lg:hidden"
               aria-label={open ? "Close menu" : "Open menu"}
               aria-expanded={open}
             >
@@ -145,21 +145,26 @@ export default function Navbar() {
               className="overflow-hidden border-t border-bronze/15 bg-cream lg:hidden"
             >
               <div className="max-h-[calc(100dvh-80px)] space-y-1 overflow-y-auto px-4 py-4">
-                {links.map((l) => (
-                  <Link
-                    key={l.label}
-                    href={l.href}
-                    className="block rounded-xl px-4 py-3 font-medium text-midnight hover:bg-parchment hover:text-bronze-deep"
-                  >
-                    {l.label}
-                  </Link>
-                ))}
+                {links
+                  .filter((l) => !l.dropdown)
+                  .map((l) => (
+                    <Link
+                      key={l.label}
+                      href={l.href}
+                      className="block cursor-pointer rounded-xl px-4 py-3 font-medium text-midnight hover:bg-parchment hover:text-bronze-deep"
+                    >
+                      {l.label}
+                    </Link>
+                  ))}
                 <div className="grid grid-cols-1 gap-1 border-t border-bronze/15 pt-2">
+                  <p className="px-4 pb-1 pt-2 text-[11px] font-semibold uppercase tracking-[0.25em] text-bronze">
+                    Services
+                  </p>
                   {services.map((s) => (
                     <Link
                       key={s.slug}
                       href={serviceHref(s)}
-                      className="flex items-center gap-3 rounded-xl px-4 py-2 text-sm text-cocoa/75 hover:text-bronze-deep"
+                      className="flex cursor-pointer items-center gap-3 rounded-xl px-4 py-2 text-sm text-cocoa/75 hover:text-bronze-deep"
                     >
                       <span className="glyph text-bronze">{s.glyph}</span>{" "}
                       {s.title}
@@ -170,7 +175,7 @@ export default function Navbar() {
                   href={waLink()}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="btn-midnight mt-3 block rounded-full px-5 py-3 text-center font-semibold"
+                  className="btn-midnight mt-3 block cursor-pointer rounded-full px-5 py-3 text-center font-semibold"
                 >
                   Book Consultation on WhatsApp
                 </a>

@@ -35,6 +35,13 @@
   --water: #3b78b8;
 }
 
+@theme {
+  /* every `transition` utility: longer, softer ease-out */
+  --default-transition-duration: 350ms;
+  --default-transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-smooth: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
 @theme inline {
   --color-night: var(--night);
   --color-night-2: var(--night-2);
@@ -82,6 +89,12 @@ body {
   color: var(--ivory);
   font-family: var(--font-manrope), system-ui, sans-serif;
   overflow-x: hidden;
+}
+
+button,
+a,
+[role="button"] {
+  cursor: pointer;
 }
 
 ::selection {
@@ -168,8 +181,8 @@ body {
     0 0 0 1px rgba(255, 230, 180, 0.4) inset,
     0 10px 40px -10px rgba(233, 194, 122, 0.7);
   transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease;
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .btn-gold:hover {
   transform: translateY(-2px);
@@ -182,8 +195,8 @@ body {
   border: 1px solid rgba(233, 194, 122, 0.35);
   color: var(--ivory);
   transition:
-    background 0.25s ease,
-    border-color 0.25s ease;
+    background 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .btn-ghost:hover {
   background: rgba(233, 194, 122, 0.08);
@@ -225,12 +238,15 @@ body {
 }
 
 .spin-slow {
+  will-change: transform;
   animation: spin 120s linear infinite;
 }
 .spin-slower {
+  will-change: transform;
   animation: spin 200s linear infinite reverse;
 }
 .spin-mid {
+  will-change: transform;
   animation: spin 60s linear infinite;
 }
 @keyframes spin {
@@ -240,7 +256,8 @@ body {
 }
 
 .float {
-  animation: float 7s ease-in-out infinite;
+  will-change: transform;
+  animation: float 7s cubic-bezier(0.45, 0, 0.55, 1) infinite;
 }
 @keyframes float {
   0%,
@@ -253,6 +270,7 @@ body {
 }
 
 .pulse-ring {
+  will-change: transform;
   animation: pulseRing 2.4s cubic-bezier(0.2, 0.7, 0.3, 1) infinite;
 }
 @keyframes pulseRing {
@@ -267,6 +285,7 @@ body {
 }
 
 .marquee {
+  will-change: transform;
   animation: marquee 40s linear infinite;
 }
 @keyframes marquee {
@@ -289,9 +308,9 @@ body {
     0 0 0 1px rgba(172, 137, 104, 0.4) inset,
     0 14px 34px -14px rgba(62, 54, 46, 0.6);
   transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    background 0.25s ease;
+    transform 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    background 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .btn-midnight:hover {
   transform: translateY(-2px);
@@ -305,8 +324,8 @@ body {
   border: 1px solid rgba(138, 106, 84, 0.45);
   color: var(--bronze-deep);
   transition:
-    background 0.25s ease,
-    border-color 0.25s ease;
+    background 0.4s cubic-bezier(0.22, 1, 0.36, 1),
+    border-color 0.4s cubic-bezier(0.22, 1, 0.36, 1);
 }
 .btn-bronze-line:hover {
   background: rgba(138, 106, 84, 0.08);
@@ -422,7 +441,7 @@ body {
 }
 
 .rise {
-  animation: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  animation: rise 0.8s cubic-bezier(0.22, 1, 0.36, 1) both;
 }
 @keyframes rise {
   from {
@@ -471,6 +490,11 @@ body {
   }
   html {
     scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
   }
 }
 

@@ -80,6 +80,15 @@ export default function Footer() {
                 </Link>
               </li>
             ))}
+            <li>
+              <Link
+                href="/vastu-coaching"
+                className="text-cream/75 transition hover:text-latte"
+              >
+                <span className="glyph mr-2 text-latte">✦</span>
+                Vastu Coaching
+              </Link>
+            </li>
           </ul>
         </div>
 
@@ -90,14 +99,13 @@ export default function Footer() {
           <ul className="mt-5 space-y-3 text-sm">
             {[
               { l: "About Saanvi", h: "/about" },
-              { l: "All Services", h: "/services" },
-              { l: "Vastu Coaching", h: "/vastu-coaching" },
               { l: "Media & Videos", h: "/media" },
               { l: "Achievements", h: "/achievements" },
               { l: "Free Numerology Calculator", h: "/#numerology" },
               { l: "Client Reviews", h: "/#reviews" },
               { l: "FAQs", h: "/#faq" },
               { l: "Book a Consultation", h: "/contact" },
+              { l: "Privacy Policy & Terms", h: "/privacy-policy" },
             ].map((x) => (
               <li key={x.l}>
                 <Link
@@ -157,7 +165,13 @@ export default function Footer() {
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-3 px-6 py-6 text-xs text-cream/50 md:flex-row">
           <p>
             © {new Date().getFullYear()} Aacharya Saanvi Gupta · ASG
-            Consultants. All rights reserved.
+            Consultants. All rights reserved. ·{" "}
+            <Link
+              href="/privacy-policy"
+              className="underline-offset-4 hover:text-latte hover:underline"
+            >
+              Privacy Policy
+            </Link>
           </p>
           <p className="text-center md:text-right">
             Guidance is based on Vedic astrology, Vastu and numerology

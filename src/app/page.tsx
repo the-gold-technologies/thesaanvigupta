@@ -4,6 +4,7 @@ import About from "@/components/landing/About";
 import Services from "@/components/landing/Services";
 import Problems from "@/components/landing/Problems";
 import Journey from "@/components/landing/Journey";
+import ConsultBand from "@/components/landing/ConsultBand";
 import Numerology from "@/components/landing/Numerology";
 import Testimonials from "@/components/landing/Testimonials";
 import Honours from "@/components/landing/Honours";
@@ -34,6 +35,7 @@ export default function Home() {
       <About />
       <Services />
       <Problems />
+      <ConsultBand />
       <Journey />
       <Honours />
       <Numerology />

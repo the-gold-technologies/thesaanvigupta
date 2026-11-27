@@ -49,7 +49,6 @@ export function serviceHref(s: { slug: string; href?: string }) {
 
 export const nav = [
   { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
   { label: "Vastu Coaching", href: "/vastu-coaching" },
   { label: "Media", href: "/media" },
   { label: "Achievements", href: "/achievements" },
@@ -589,10 +588,20 @@ export type Video = {
 };
 
 /** Publications / channels that have featured Saanvi. */
-export const media: { name: string; kind: string; url?: string }[] = [
-  { name: "NDTV", kind: "News channel" },
-  { name: "Zee TV", kind: "Television" },
-  { name: "Amar Ujala", kind: "Hindi daily" },
+export const media: {
+  name: string;
+  kind: string;
+  url?: string;
+  /** Outlet logo in /public (shown in the press cards) */
+  logo?: string;
+}[] = [
+  { name: "NDTV", kind: "News channel", logo: "/images/press/ndtv.svg" },
+  { name: "Zee TV", kind: "Television", logo: "/images/press/zee-tv.svg" },
+  {
+    name: "Amar Ujala",
+    kind: "Hindi daily",
+    logo: "/images/press/amar-ujala.png",
+  },
 ];
 
 /** "Saanvi's guidance" — long-form YouTube videos (channel: @astrologervastuconsultants). */
