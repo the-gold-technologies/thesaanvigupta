@@ -1,7 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Mail, MapPin, Phone } from "lucide-react";
-import { services, site, waLink } from "@/lib/site";
+import { serviceHref, services, site, waLink } from "@/lib/site";
 import {
   FacebookIcon,
   InstagramIcon,
@@ -72,7 +72,7 @@ export default function Footer() {
             {services.map((s) => (
               <li key={s.slug}>
                 <Link
-                  href={`/services/${s.slug}`}
+                  href={serviceHref(s)}
                   className="text-cream/75 transition hover:text-latte"
                 >
                   <span className="glyph mr-2 text-latte">{s.glyph}</span>
@@ -91,6 +91,8 @@ export default function Footer() {
             {[
               { l: "About Saanvi", h: "/about" },
               { l: "All Services", h: "/services" },
+              { l: "Vastu Coaching", h: "/vastu-coaching" },
+              { l: "Media & Videos", h: "/media" },
               { l: "Free Numerology Calculator", h: "/#numerology" },
               { l: "Client Reviews", h: "/#reviews" },
               { l: "FAQs", h: "/#faq" },

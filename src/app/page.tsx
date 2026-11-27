@@ -9,6 +9,7 @@ import Testimonials from "@/components/landing/Testimonials";
 import Honours from "@/components/landing/Honours";
 import FaqSection from "@/components/landing/FaqSection";
 import FinalCta from "@/components/landing/FinalCta";
+import Projects from "@/components/landing/Projects";
 import { faqs } from "@/lib/site";
 
 const faqLd = {
@@ -35,9 +36,10 @@ export default function Home() {
       <Services />
       <Problems />
       <Journey />
+      <Honours />
+      <Projects />
       <Numerology />
       <Testimonials />
-      <Honours />
       <FaqSection />
       <FinalCta />
     </div>

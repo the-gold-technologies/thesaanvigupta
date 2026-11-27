@@ -18,7 +18,7 @@ import {
 } from "lucide-react";
 import { Heading, Sparkle } from "./Ornament";
 import { WhatsAppIcon } from "@/components/Icons";
-import { problems, services, waLink } from "@/lib/site";
+import { problems, serviceHref, services, waLink } from "@/lib/site";
 
 const ICONS = {
   briefcase: Briefcase,
@@ -170,7 +170,7 @@ export default function Problems() {
                     <span key={slug}>
                       {k > 0 && " & "}
                       <Link
-                        href={`/services/${slug}`}
+                        href={serviceHref(s)}
                         className="font-semibold text-latte underline-offset-4 hover:underline"
                       >
                         {s.title}

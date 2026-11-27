@@ -7,7 +7,7 @@ const WORDS = [
   "Personalised for you",
   "Kundali & Prashna",
   "Numerology",
-  "Tarot guidance",
+  "Vastu Coaching",
 ];
 
 /** Mocha ribbon with a slow marquee, like the reference poster footer. */

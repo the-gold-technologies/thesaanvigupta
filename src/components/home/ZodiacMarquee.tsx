@@ -17,7 +17,7 @@ const TOPICS = [
   "Vastu Shastra",
   "Numerology",
   "Prashna Kundali",
-  "Tarot",
+  "Vastu Coaching",
   "Kundali Matching",
   "Muhurat",
   "Name Correction",

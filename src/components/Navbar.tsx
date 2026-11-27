@@ -6,13 +6,14 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
-import { services, waLink } from "@/lib/site";
+import { serviceHref, services, waLink } from "@/lib/site";
 
 const links = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services", dropdown: true },
-  { label: "Numerology", href: "/#numerology" },
+  { label: "Vastu Coaching", href: "/vastu-coaching" },
+  { label: "Media", href: "/media" },
   { label: "Reviews", href: "/#reviews" },
   { label: "Contact", href: "/contact" },
 ];
@@ -93,7 +94,7 @@ export default function Navbar() {
                       {services.map((s) => (
                         <Link
                           key={s.slug}
-                          href={`/services/${s.slug}`}
+                          href={serviceHref(s)}
                           className="flex items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-cocoa transition hover:bg-parchment hover:text-bronze-deep"
                         >
                           <span className="glyph grid h-8 w-8 place-items-center rounded-full border border-bronze/30 text-bronze">
@@ -158,7 +159,7 @@ export default function Navbar() {
                   {services.map((s) => (
                     <Link
                       key={s.slug}
-                      href={`/services/${s.slug}`}
+                      href={serviceHref(s)}
                       className="flex items-center gap-3 rounded-xl px-4 py-2 text-sm text-cocoa/75 hover:text-bronze-deep"
                     >
                       <span className="glyph text-bronze">{s.glyph}</span>{" "}

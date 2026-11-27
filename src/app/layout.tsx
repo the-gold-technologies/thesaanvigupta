@@ -4,7 +4,7 @@ import "./globals.css";
 import StarField from "@/components/StarField";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import WhatsAppFloat from "@/components/WhatsAppFloat";
+import StickyContact from "@/components/StickyContact";
 import { site } from "@/lib/site";
 
 const cinzel = Cinzel({
@@ -34,14 +34,14 @@ export const metadata: Metadata = {
     template: "%s | Aacharya Saanvi Gupta",
   },
   description:
-    "Award-winning astrologer, Vastu consultant and numerologist in Noida & Delhi NCR with 20+ years of experience and 10,000+ consultations. Astrology, Vastu without demolition, Numerology, Prashna Kundali & Tarot.",
+    "Award-winning astrologer, Vastu consultant and numerologist in Noida & Delhi NCR with 20+ years of experience and 10,000+ consultations. Astrology, Vastu without demolition, Numerology, Prashna Kundali & Vastu Coaching.",
   keywords: [
     "best vastu consultant in noida",
     "vastu consultant delhi",
     "astrologer in noida",
     "numerologist in noida",
     "prashna kundali",
-    "tarot card reading noida",
+    "vastu coaching noida",
     "Saanvi Gupta",
   ],
   openGraph: {
@@ -97,7 +97,8 @@ export default function RootLayout({
         <Navbar />
         <main>{children}</main>
         <Footer />
-        <WhatsAppFloat />
+        <StickyContact />
+        <div className="h-14 md:hidden" aria-hidden />
       </body>
     </html>
   );

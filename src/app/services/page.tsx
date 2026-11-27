@@ -6,9 +6,9 @@ import Journey from "@/components/landing/Journey";
 import FinalCta from "@/components/landing/FinalCta";
 
 export const metadata: Metadata = {
-  title: "Services: Astrology, Vastu, Numerology, Prashna & Tarot",
+  title: "Services: Astrology, Vastu, Numerology & Prashna Kundali",
   description:
-    "Astrology readings, Vastu consultancy without demolition, Numerology, Prashna Kundali and Tarot card reading by Aacharya Saanvi Gupta in Noida & Delhi NCR, in person or online.",
+    "Astrology readings, Vastu consultancy without demolition, Numerology and Prashna Kundali by Aacharya Saanvi Gupta in Noida & Delhi NCR, in person or online.",
 };
 
 export default function ServicesPage() {
@@ -18,7 +18,7 @@ export default function ServicesPage() {
         eyebrow="Services"
         title="Ancient wisdom,"
         highlight="modern solutions."
-        sub="Five sacred sciences, one goal: practical answers for your life, home and business. Available in person in Noida and online worldwide."
+        sub="Four sacred sciences, one goal: practical answers for your life, home and business. Available in person in Noida and online worldwide."
         crumbs={[{ label: "Services" }]}
       />
       <Services showHeading={false} />

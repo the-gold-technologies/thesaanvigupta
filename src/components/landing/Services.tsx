@@ -3,14 +3,14 @@ import { ArrowUpRight } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import BronzeWheel from "./BronzeWheel";
 import { Heading } from "./Ornament";
-import { services } from "@/lib/site";
+import { serviceHref, services } from "@/lib/site";
 
 /** Per-service tint, taken from the ruling graha — like the coloured cards in the reference dashboard. */
 const TINT: Record<string, { ring: string; label: string; span: string }> = {
   "astrology-reading": {
     ring: "#e3c9a6",
     label: "Sun · Surya",
-    span: "lg:col-span-3 lg:row-span-2",
+    span: "lg:col-span-3 lg:row-span-3",
   },
   "vastu-consultant": {
     ring: "#e3c9a6",
@@ -25,11 +25,6 @@ const TINT: Record<string, { ring: string; label: string; span: string }> = {
   "prashan-kundali": {
     ring: "#e3c9a6",
     label: "Moon · Chandra",
-    span: "lg:col-span-3",
-  },
-  "tarot-card-reading": {
-    ring: "#e3c9a6",
-    label: "Venus · Shukra",
     span: "lg:col-span-3",
   },
 };
@@ -48,7 +43,7 @@ export default function Services({
             eyebrow="Our services"
             title="Ancient sciences,"
             script="answers for today"
-            sub="Five time-tested disciplines, one goal: clear guidance and remedies you can actually follow."
+            sub="Four time-tested sciences, one goal: clear guidance and remedies you can actually follow."
           />
         )}
 
@@ -63,7 +58,7 @@ export default function Services({
                 className={`${t.span} ${featured ? "md:col-span-2 lg:col-span-3" : ""}`}
               >
                 <Link
-                  href={`/services/${s.slug}`}
+                  href={serviceHref(s)}
                   className="group relative flex h-full flex-col overflow-hidden rounded-[1.6rem] border border-umber/40 bg-gradient-to-br from-[#93683f] via-[#66513f] to-[#4a3e35] p-7 text-cream shadow-[0_30px_60px_-35px_rgba(62,54,46,0.6)] transition duration-500 hover:-translate-y-1 hover:border-latte/50 sm:p-8"
                 >
                   {featured && (

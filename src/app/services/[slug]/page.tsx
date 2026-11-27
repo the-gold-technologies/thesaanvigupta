@@ -7,12 +7,12 @@ import Reveal from "@/components/Reveal";
 import Testimonials from "@/components/landing/Testimonials";
 import FinalCta from "@/components/landing/FinalCta";
 import { WhatsAppIcon } from "@/components/Icons";
-import { services, site, waLink } from "@/lib/site";
+import { serviceHref, services, site, waLink } from "@/lib/site";
 
 export const dynamicParams = false;
 
 export function generateStaticParams() {
-  return services.map((s) => ({ slug: s.slug }));
+  return services.filter((s) => !s.href).map((s) => ({ slug: s.slug }));
 }
 
 export async function generateMetadata({
@@ -31,7 +31,7 @@ export default async function ServicePage({
   params,
 }: PageProps<"/services/[slug]">) {
   const { slug } = await params;
-  const s = services.find((x) => x.slug === slug);
+  const s = services.find((x) => x.slug === slug && !x.href);
   if (!s) notFound();
   const others = services.filter((x) => x.slug !== s.slug);
 
@@ -151,7 +151,7 @@ export default async function ServicePage({
               {others.map((o) => (
                 <Link
                   key={o.slug}
-                  href={`/services/${o.slug}`}
+                  href={serviceHref(o)}
                   className="group flex items-center justify-between rounded-2xl border border-bronze/20 bg-white/70 px-5 py-4 transition hover:border-bronze/50 hover:bg-white"
                 >
                   <span className="flex items-center gap-3 text-sm text-cocoa">

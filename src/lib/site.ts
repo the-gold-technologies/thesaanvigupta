@@ -21,7 +21,14 @@ export const site = {
     instagram: "https://www.instagram.com/astrosaanvigupta/",
     facebook: "https://www.facebook.com/astrosaanvigupta/",
     linkedin: "https://www.linkedin.com/in/astrosaanvigupta",
+    // TODO: confirm the YouTube channel handle
+    youtube: "https://www.youtube.com/@astrosaanvigupta",
   },
+  instagramHandle: "astrosaanvigupta",
+  /** Google Place ID (from the "write a review" link) — used for live reviews */
+  googlePlaceId: "ChIJmV2ZEyblDDkR5xb_IfCXMNQ",
+  mapEmbedUrl:
+    "https://www.google.com/maps?q=ASG+Consultants,+115+Cleo+Street,+Sector+121,+Noida&output=embed",
   stats: [
     { value: 20, suffix: "+", label: "Years of practice" },
     { value: 10000, suffix: "+", label: "Consultations" },
@@ -36,11 +43,16 @@ export function waLink(
   return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}`;
 }
 
+/** Link for a service card: its dedicated page if it has one. */
+export function serviceHref(s: { slug: string; href?: string }) {
+  return s.href ?? `/services/${s.slug}`;
+}
+
 export const nav = [
   { label: "Home", href: "/" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
-  { label: "Numerology Tool", href: "/#numerology" },
+  { label: "Vastu Coaching", href: "/vastu-coaching" },
   { label: "Reviews", href: "/#reviews" },
   { label: "Contact", href: "/contact" },
 ];
@@ -52,6 +64,8 @@ export type Service = {
   glyph: string;
   planet: string;
   intro: string;
+  /** Set when the service has its own dedicated page instead of /services/[slug] */
+  href?: string;
   helpsWith: string[];
   process: { title: string; text: string }[];
   youShare: string[];
@@ -209,40 +223,6 @@ export const services: Service[] = [
       "Context of the situation",
     ],
   },
-  {
-    slug: "tarot-card-reading",
-    title: "Tarot Card Reading",
-    short:
-      "Intuitive guidance when the path ahead feels uncertain — for love, career and life choices.",
-    glyph: "✦",
-    planet: "Venus",
-    intro:
-      "Tarot uses symbolic cards to reflect your present energy and possible outcomes. A reading brings hidden feelings and options to the surface, helping you see a situation clearly and decide with confidence.",
-    helpsWith: [
-      "Love and relationship clarity",
-      "Career crossroads",
-      "Emotional healing and closure",
-      "Choosing between options",
-      "Monthly and yearly guidance",
-      "Understanding what's blocking you",
-    ],
-    process: [
-      { title: "Set an intention", text: "Share what you'd like clarity on." },
-      {
-        title: "The spread",
-        text: "Cards are drawn and laid out for your question.",
-      },
-      {
-        title: "Interpretation",
-        text: "A clear reading with practical next steps.",
-      },
-    ],
-    youShare: [
-      "Your question or area of life",
-      "Your name",
-      "Preferred session mode",
-    ],
-  },
 ];
 
 export type Problem = {
@@ -293,7 +273,7 @@ export const problems: Problem[] = [
       "Find favourable marriage timing from your dashas",
       "Gentle remedies for harmony — including bedroom Vastu",
     ],
-    services: ["astrology-reading", "tarot-card-reading"],
+    services: ["astrology-reading", "prashan-kundali"],
   },
   {
     key: "money",
@@ -415,7 +395,13 @@ export const reviews = [
   },
 ];
 
-export const achievements = [
+/** Awards. Add `image: "/images/awards/xyz.jpg"` to show a framed photo (tap to enlarge). */
+export const achievements: {
+  year: string;
+  title: string;
+  by: string;
+  image?: string;
+}[] = [
   {
     year: "2021",
     title: "Vastu Excellence Award",
@@ -469,7 +455,7 @@ export const faqs = [
   },
   {
     q: "What services does she offer?",
-    a: "Astrology readings (Janam Kundali), Vastu consultancy for homes and businesses, Numerology, Prashna Kundali and Tarot card readings.",
+    a: "Astrology readings (Janam Kundali), Vastu consultancy for homes and businesses, Numerology, Prashna Kundali, and Vastu Coaching for anyone who wants to learn Vastu Shastra.",
   },
   {
     q: "How can I book a consultation?",
@@ -477,7 +463,7 @@ export const faqs = [
   },
   {
     q: "Are consultations available online?",
-    a: "Yes. Astrology, numerology, Prashna and tarot sessions can be done over phone or video call. Vastu can be done from your floor plan, or through a site visit in Delhi NCR.",
+    a: "Yes. Astrology, numerology and Prashna sessions can be done over phone or video call, and Vastu Coaching is available online too. Vastu can be done from your floor plan, or through a site visit in Delhi NCR.",
   },
   {
     q: "Will Vastu remedies require breaking walls?",
@@ -562,3 +548,131 @@ export const numberMeanings: Record<
     color: "#f0664a",
   },
 };
+
+/* ------------------------------------------------------------------ */
+/* Media, videos, podcasts, projects                                   */
+/* Fill in the YouTube IDs (the part after "v=" or "/shorts/").        */
+/* Cards without an ID link to the YouTube channel instead.            */
+/* ------------------------------------------------------------------ */
+
+export type Video = {
+  /** YouTube video ID, e.g. "dQw4w9WgXcQ". Leave "" until available. */
+  id: string;
+  title: string;
+  /** Bold word(s) shown in the caption */
+  highlight?: string;
+  caption?: string;
+};
+
+/** Publications / channels that have featured Saanvi. */
+export const media: { name: string; kind: string; url?: string }[] = [
+  { name: "NDTV", kind: "News channel" },
+  { name: "Zee TV", kind: "Television" },
+  { name: "Amar Ujala", kind: "Hindi daily" },
+];
+
+/** "Saanvi's guidance" — long-form YouTube videos. */
+export const guidanceVideos: Video[] = [
+  {
+    id: "",
+    title: "Vastu for a happy home",
+    highlight: "Home Vastu",
+    caption: "Simple corrections without demolition",
+  },
+  {
+    id: "",
+    title: "Marriage delays and remedies",
+    highlight: "Marriage",
+    caption: "What your Kundali says about timing",
+  },
+  {
+    id: "",
+    title: "Numbers that shape your destiny",
+    highlight: "Numerology",
+    caption: "Your Moolank and Bhagyank explained",
+  },
+];
+
+/** YouTube Shorts (vertical). */
+export const shorts: Video[] = [
+  { id: "", title: "Lucky direction for your bed" },
+  { id: "", title: "Main door Vastu tip" },
+  { id: "", title: "Locker placement for wealth" },
+  { id: "", title: "Study table direction" },
+];
+
+/** Television appearances. */
+export const tvVideos: Video[] = [
+  {
+    id: "",
+    title: "Saanvi Gupta on NDTV",
+    highlight: "NDTV",
+    caption: "Astrology & Vastu guidance",
+  },
+  {
+    id: "",
+    title: "Saanvi Gupta on Zee TV",
+    highlight: "Zee TV",
+    caption: "Vastu remedies for every home",
+  },
+];
+
+/** Podcast appearances. */
+export const podcasts: (Video & { show: string })[] = [
+  {
+    id: "",
+    show: "Podcast",
+    title: "Vastu, energy and the modern home",
+    caption: "A conversation on living in balance",
+  },
+  {
+    id: "",
+    show: "Podcast",
+    title: "Astrology without fear",
+    caption: "Practical guidance over predictions",
+  },
+  {
+    id: "",
+    show: "Podcast",
+    title: "The power of numbers",
+    caption: "Numerology in everyday decisions",
+  },
+];
+
+/** Instagram post URLs to embed, e.g. "https://www.instagram.com/p/ABC123/". */
+export const instagramPosts: string[] = [];
+
+/** Vastu project showcase. Add `image` and `location` for real projects. */
+export const projects: {
+  title: string;
+  type: string;
+  text: string;
+  location?: string;
+  image?: string;
+}[] = [
+  {
+    title: "Homes & Apartments",
+    type: "Residential Vastu",
+    text: "Flats, villas and independent houses balanced zone by zone — without breaking a single wall.",
+  },
+  {
+    title: "Offices & Corporate Spaces",
+    type: "Commercial Vastu",
+    text: "Seating, entrances and cash zones aligned for better decisions, teamwork and growth.",
+  },
+  {
+    title: "Shops & Showrooms",
+    type: "Retail Vastu",
+    text: "Entrance, display and counter placement planned to support footfall and sales.",
+  },
+  {
+    title: "Factories & Industrial Units",
+    type: "Industrial Vastu",
+    text: "Machinery, storage and dispatch zones mapped for smooth production and cash flow.",
+  },
+  {
+    title: "Plots & New Property",
+    type: "Pre-purchase Vastu",
+    text: "Plot shape, road position and directions checked before you buy or build.",
+  },
+];
