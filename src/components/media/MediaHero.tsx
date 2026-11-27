@@ -10,7 +10,6 @@ import {
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
 import { WhatsAppIcon } from "@/components/Icons";
-import { PlanetDots } from "@/components/landing/Ornament";
 import { media, site, waLink } from "@/lib/site";
 
 /** Plain-text wordmark styling per outlet (not the outlets' logos). */
@@ -138,20 +137,70 @@ export default function MediaHero() {
       </div>
 
       {/* as-featured-on strip */}
-      <div className="relative border-t border-latte/15 bg-black/25 backdrop-blur-sm">
-        <div className="mx-auto flex max-w-7xl flex-col items-center justify-center gap-4 px-5 py-6 sm:flex-row sm:gap-12 sm:px-6">
-          <span className="flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[0.35em] text-latte/80">
-            <PlanetDots /> As featured on
-          </span>
-          <div className="flex flex-wrap items-center justify-center gap-x-10 gap-y-3 sm:gap-x-14">
-            {media.map((m) => (
-              <span
-                key={m.name}
-                className={`text-2xl text-cream/85 sm:text-3xl ${WORDMARK[m.name] ?? "font-display"}`}
-              >
-                {m.name}
+      <div className="relative border-y border-sand bg-[#F5ECDF] text-cocoa">
+        <div className="relative mx-auto flex max-w-7xl flex-col items-center gap-5 px-5 py-6 sm:px-6 lg:flex-row lg:gap-10 lg:px-8">
+          <div className="flex shrink-0 items-center gap-3 rounded-full border border-umber/20 bg-cream py-2 pl-2 pr-5 shadow-[0_10px_24px_-18px_rgba(92,67,52,0.7)]">
+            <span className="grid h-9 w-9 place-items-center rounded-full bg-gradient-to-br from-umber to-bronze-deep text-cream">
+              <Tv className="h-4 w-4" />
+            </span>
+            <span className="leading-tight">
+              <span className="block text-[10px] font-semibold uppercase tracking-[0.3em] text-bronze">
+                As featured on
               </span>
-            ))}
+              <span className="block font-display text-sm uppercase tracking-[0.08em] text-mocha">
+                National TV &amp; Press
+              </span>
+            </span>
+          </div>
+
+          {/* logo slider: two identical halves, translated -50% in a loop */}
+          <div
+            className="relative w-full min-w-0 overflow-hidden lg:flex-1"
+            style={{
+              maskImage:
+                "linear-gradient(90deg, transparent, black 10%, black 90%, transparent)",
+              WebkitMaskImage:
+                "linear-gradient(90deg, transparent, black 10%, black 90%, transparent)",
+            }}
+          >
+            <ul className="marquee flex w-max py-2 [animation-duration:28s] hover:[animation-play-state:paused]">
+              {[0, 1].flatMap((half) =>
+                Array.from({ length: 3 }, () => media)
+                  .flat()
+                  .map((m, i) => (
+                    <li
+                      key={`${half}-${i}`}
+                      aria-hidden={half === 1 || i >= media.length}
+                      className="w-32 shrink-0 pr-3 sm:w-44 sm:pr-4"
+                    >
+                      <a
+                        href="#media"
+                        tabIndex={half === 1 || i >= media.length ? -1 : 0}
+                        aria-label={`${m.name} — ${m.kind}`}
+                        className="group flex h-14 items-center justify-center rounded-xl border border-umber/15 bg-white px-4 shadow-[0_12px_26px_-20px_rgba(92,67,52,0.8)] transition duration-500 hover:-translate-y-1 hover:border-umber/40 hover:shadow-[0_18px_32px_-18px_rgba(92,67,52,0.75)] sm:h-16 sm:px-5"
+                      >
+                        {m.logo ? (
+                          <span className="relative block h-6 w-full sm:h-7">
+                            <Image
+                              src={m.logo}
+                              alt={`${m.name} logo`}
+                              fill
+                              unoptimized
+                              className="object-contain transition duration-500 group-hover:scale-105"
+                            />
+                          </span>
+                        ) : (
+                          <span
+                            className={`text-lg text-midnight sm:text-xl ${WORDMARK[m.name] ?? "font-display"}`}
+                          >
+                            {m.name}
+                          </span>
+                        )}
+                      </a>
+                    </li>
+                  ))
+              )}
+            </ul>
           </div>
         </div>
       </div>

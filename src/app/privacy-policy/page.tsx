@@ -143,6 +143,7 @@ export default function PrivacyPolicyPage() {
         highlight="& Terms"
         sub="How we collect, use and protect your information, and the terms for using this website and our services."
         crumbs={[{ label: "Privacy Policy" }]}
+        tone="dark"
       />
 
       <div className="paper relative py-20 md:py-24">

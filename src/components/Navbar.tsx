@@ -20,6 +20,7 @@ const links = [
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
   const [open, setOpen] = useState(false);
+  const [servicesOpen, setServicesOpen] = useState(false);
   const pathname = usePathname();
 
   useEffect(() => {
@@ -29,12 +30,11 @@ export default function Navbar() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
-  // Close the mobile menu when the route changes
-  const [lastPath, setLastPath] = useState(pathname);
-  if (pathname !== lastPath) {
-    setLastPath(pathname);
+  // Close menus when route changes
+  useEffect(() => {
+    setServicesOpen(false);
     setOpen(false);
-  }
+  }, [pathname]);
 
   return (
     <header className="fixed inset-x-0 top-0 z-50">
@@ -82,18 +82,45 @@ export default function Navbar() {
                 <span className="absolute inset-x-3.5 -bottom-0.5 h-px bg-bronze" />
               );
               return l.dropdown ? (
-                <li key={l.label} className="group relative">
-                  <button type="button" aria-haspopup="true" className={cls}>
+                <li
+                  key={l.label}
+                  className="relative"
+                  onMouseEnter={() => setServicesOpen(true)}
+                  onMouseLeave={() => setServicesOpen(false)}
+                >
+                  <button
+                    type="button"
+                    aria-haspopup="true"
+                    aria-expanded={servicesOpen}
+                    onClick={() => setServicesOpen((v) => !v)}
+                    className={cls}
+                  >
                     {l.label}{" "}
-                    <ChevronDown className="h-3.5 w-3.5 transition group-hover:rotate-180 group-focus-within:rotate-180" />
+                    <ChevronDown
+                      className={`h-3.5 w-3.5 transition-transform duration-200 ${
+                        servicesOpen ? "rotate-180" : ""
+                      }`}
+                    />
                     {underline}
                   </button>
-                  <div className="invisible absolute left-1/2 top-full w-72 -translate-x-1/2 pt-3 opacity-0 transition-all duration-300 group-focus-within:visible group-focus-within:opacity-100 group-hover:visible group-hover:opacity-100">
+                  <div
+                    className={`absolute left-1/2 top-full w-72 -translate-x-1/2 pt-3 transition-all duration-200 ${
+                      servicesOpen
+                        ? "pointer-events-auto visible translate-y-0 opacity-100"
+                        : "pointer-events-none invisible -translate-y-1 opacity-0"
+                    }`}
+                  >
                     <div className="rounded-2xl border border-bronze/15 bg-cream p-2 shadow-[0_30px_60px_-25px_rgba(43,31,24,0.45)]">
                       {services.map((s) => (
                         <Link
                           key={s.slug}
                           href={serviceHref(s)}
+                          onClick={() => {
+                            setServicesOpen(false);
+                            if (typeof document !== "undefined") {
+                              (document.activeElement as HTMLElement)?.blur();
+                            }
+                          }}
                           className="flex cursor-pointer items-center gap-3 rounded-xl px-3 py-2.5 text-sm text-cocoa transition hover:bg-parchment hover:text-bronze-deep"
                         >
                           <span className="glyph grid h-8 w-8 place-items-center rounded-full border border-bronze/30 text-bronze">
@@ -151,6 +178,7 @@ export default function Navbar() {
                     <Link
                       key={l.label}
                       href={l.href}
+                      onClick={() => setOpen(false)}
                       className="block cursor-pointer rounded-xl px-4 py-3 font-medium text-midnight hover:bg-parchment hover:text-bronze-deep"
                     >
                       {l.label}
@@ -164,6 +192,7 @@ export default function Navbar() {
                     <Link
                       key={s.slug}
                       href={serviceHref(s)}
+                      onClick={() => setOpen(false)}
                       className="flex cursor-pointer items-center gap-3 rounded-xl px-4 py-2 text-sm text-cocoa/75 hover:text-bronze-deep"
                     >
                       <span className="glyph text-bronze">{s.glyph}</span>{" "}
